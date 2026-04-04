@@ -8,8 +8,8 @@
 
         <!-- Bento Filter Bar -->
         <x-admin.filter-bar 
-            :requestTypes="['Transcript', 'Enrollment', 'Grant']"
-            :statuses="['Pending', 'Approved', 'Rejected']"
+            :requestTypes="$requestTypes"
+            :statuses="$statuses"
         />
 
         <!-- Data Table Container -->
@@ -68,7 +68,7 @@
                                 </span>
                             </td>
                             <td class="p-5 text-right">
-                                <a href="{{ route('requests.show', $request->id) }}" class="text-primary font-bold text-sm hover:underline">View</a>
+                                <a href="{{ route('admin.requests.show', $request->id) }}" class="text-primary font-bold text-sm hover:underline">View</a>
                             </td>
                         </tr>
                     @endforeach

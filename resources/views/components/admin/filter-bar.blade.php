@@ -1,4 +1,4 @@
-<form method="GET" action="{{ route('requests.index') }}" class="grid grid-cols-12 gap-4 mb-8">
+<form method="GET" action="{{ route('admin.requests.index') }}" class="grid grid-cols-12 gap-4 mb-8">
     <!-- Search Input -->
     <div class="col-span-12 md:col-span-5 bg-surface-container-low p-2 rounded-xl flex items-center">
         <span class="material-symbols-outlined px-3 text-slate-400">search</span>
@@ -20,7 +20,7 @@
             class="bg-transparent border-none focus:ring-0 w-full text-sm font-medium appearance-none"
         >
             <option value="">Request Type</option>
-            @foreach ($requestTypes  as $type)
+            @foreach ($requestTypes as $type)
                 <option value="{{ $type }}" {{ request('type') === $type ? 'selected' : '' }}>
                     {{ $type }}
                 </option>
