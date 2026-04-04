@@ -1,6 +1,6 @@
-<x-form-layout title="Submit Request | Academic Curator">
+<x-client.form-layout title="Submit Request | Academic Curator">
     <!-- Page Header -->
-    <x-form-header 
+    <x-client.form-header 
         title="Submit New Request"
         subtitle="Initiate administrative requests through our secure curatorial system."
         breadcrumb="Academic Records & Support"
@@ -11,8 +11,8 @@
         <form class="space-y-10" action="{{ route('requests.store') }}" method="POST">
             @csrf
             <!-- Step 1: Category -->
-            <x-form-section :step="1" title="Select Request Category">
-                <x-form-field 
+            <x-client.form-section :step="1" title="Select Request Category">
+                <x-client.form-field 
                     type="select" 
                     name="type" 
                     placeholder="Choose a request type..."
@@ -24,12 +24,12 @@
                     <option value="Internship Authorization">Internship Authorization</option>
                     <option value="Re-enrollment for Academic Year">Re-enrollment for Academic Year</option>
                     <option value="Personal Information Correction">Personal Information Correction</option>
-                </x-form-field>
-            </x-form-section>
+                </x-client.form-field>
+            </x-client.form-section>
 
             <!-- Step 2: Details -->
-            <x-form-section :step="2" title="Request Specifications">
-                <x-form-field 
+            <x-client.form-section :step="2" title="Request Specifications">
+                <x-client.form-field 
                     type="textarea" 
                     label="Detailed Description" 
                     name="comment"
@@ -44,7 +44,7 @@
                     placeholder="e.g., Lost card, Graduate application"
                     required
                 /> --}}
-            </x-form-section>
+            </x-client.form-section>
 
             <!-- Step 3: Attachments -->
             {{-- <x-form-section :step="3" title="Supporting Documentation">
@@ -69,4 +69,4 @@
 
         </form>
     </section>
-</x-form-layout>
+</x-client.form-layout>

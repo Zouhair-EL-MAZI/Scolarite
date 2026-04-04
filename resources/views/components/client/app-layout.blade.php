@@ -19,10 +19,10 @@
 </head>
 <body class="bg-surface text-on-surface">
 <!-- TopNavBar -->
-<x-top-nav-bar />
+<x-client.top-nav-bar />
 
 <!-- SideNavBar -->
-<x-side-nav-bar :activeRoute="$activeRoute ?? 'requests'" />
+<x-client.side-nav-bar :activeRoute="$activeRoute ?? 'requests'" />
 
 <!-- Main Content Canvas -->
 <main class="lg:ml-64 pt-24 px-8 pb-12 min-h-screen bg-surface">

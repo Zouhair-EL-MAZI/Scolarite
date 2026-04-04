@@ -14,7 +14,7 @@
             </thead>
             <tbody class="text-sm">
                 @forelse($requests as $request)
-                    <x-request-table-row :request="$request" />
+                    <x-client.request-table-row :request="$request" />
                 @empty
                     <tr>
                         <td colspan="5" class="px-8 py-8 text-center text-outline">

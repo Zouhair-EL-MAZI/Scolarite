@@ -22,7 +22,7 @@
 </head>
 <body class="bg-surface text-on-surface">
     <!-- Simple Top Nav -->
-    <x-top-nav-bar />
+    <x-client.top-nav-bar />
     
     {{-- <nav class="fixed top-0 w-full z-50 bg-slate-50/80 backdrop-blur-xl flex justify-between items-center px-12 h-20">
         <div class="text-xl font-extrabold tracking-tighter text-blue-950">Academic Curator</div>

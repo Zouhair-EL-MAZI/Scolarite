@@ -1,6 +1,6 @@
-<x-app-layout title="My Requests" activeRoute="requests">
+<x-client.app-layout title="My Requests" activeRoute="requests">
     <!-- Hero Header Section & Search -->
-    <x-page-header 
+    <x-client.page-header 
         title="My Requests"
         searchPlaceholder="Search by type or status..."
     />
@@ -13,7 +13,7 @@
     /> --}}
 
     <!-- Data Table Section -->
-    <x-request-data-table :requests="$requests ?? []" />
+    <x-client.request-data-table :requests="$requests ?? []" />
 
     <!-- Pagination -->
     {{-- <x-pagination 
@@ -25,4 +25,4 @@
 
     <!-- Footer -->
     {{-- <x-page-footer /> --}}
-</x-app-layout>
+</x-client.app-layout>
