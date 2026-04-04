@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('student_id')->constrained()->cascadeOnDelete();
             $table->string('type');
-            $table->string('status');
+            $table->string('status')->default('PENDING');
             $table->text('comment')->nullable();
             $table->timestamps();
         });
