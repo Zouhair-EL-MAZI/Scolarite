@@ -11,9 +11,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('requests', FORequestsController::class)->only(['index', 'create', 'store'])->middleware('auth:student');
-Route::get('/admin/requests', [AdminController::class, 'index'])->name('admin.requests.index')->middleware('auth:admin');
-Route::get('/admin/requests/{request}', [AdminController::class, 'show'])->name('admin.requests.show')->middleware('auth:admin');
+Route::resource('requests', FORequestsController::class)->only(['index', 'create', 'store'])->middleware('auth.student');
+Route::get('/admin/requests', [AdminController::class, 'index'])->name('admin.requests.index')->middleware('auth.admin');
+Route::get('/admin/requests/{request}', [AdminController::class, 'show'])->name('admin.requests.show')->middleware('auth.admin');
 
 
 // Authentication routes for students
