@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+// This model is used for general user authentication and inherits Authenticatable.
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -22,6 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'apogee_number',
+        'role',
     ];
 
     /**
@@ -44,6 +47,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'dob' => 'date', // Ensure dob is cast to a date
         ];
     }
 }

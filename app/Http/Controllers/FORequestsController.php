@@ -22,6 +22,7 @@ class FORequestsController extends Controller
             'total' => $requests->total(),
             'perPage' => $perPage,
         ]);
+
     }
         
     /**

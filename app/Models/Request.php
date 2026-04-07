@@ -25,4 +25,6 @@ class Request extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    // This model represents a request and inherits Model.
 }

@@ -1,6 +1,10 @@
 <?php
 
+use App\Models\Admin;
+use App\Models\Student;
 use App\Models\User;
+use App\Models\Admin;
+use App\Models\Student;
 
 return [
 
@@ -16,8 +20,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => env('AUTH_GUARD', 'web'),
-        'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
+        'guard' => env('AUTH_GUARD', 'web'), // default guard
+        'passwords' => env('AUTH_PASSWORD_BROKER', 'users'), // default password broker
     ],
 
     /*
@@ -42,6 +46,21 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        
+
+        // Guard dyal students
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
+        // Guard dyal admins
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+
     ],
 
     /*
@@ -67,10 +86,16 @@ return [
             'model' => env('AUTH_MODEL', User::class),
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        // Admins
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => Admin::class, // Admin model khaso extends Authenticatable
+        ],
+
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => Student::class,
+        ],
     ],
 
     /*
@@ -96,6 +121,12 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
         ],

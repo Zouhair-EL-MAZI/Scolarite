@@ -27,6 +27,12 @@ class AdminSeeder extends Seeder
             'email' => 'admin@example.com',
         ]);
 
+        Admin::factory()->admin()->create([
+            'name' => 'Admin',
+            'email' => 'admin@gmail.com',
+            'password' => 'admin123',
+        ]);
+
         // Create 5 random admins
         // Admin::factory(5)->create();
     }

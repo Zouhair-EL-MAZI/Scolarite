@@ -22,9 +22,9 @@
                 <option disabled="" selected="" value="">{{ $placeholder }}</option>
                 {{ $slot }}
             </select>
-            {{-- <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+            <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
                 <span class="material-symbols-outlined">expand_more</span>
-            </div> --}}
+            </div>
         </div>
     @else
         <input class="w-full bg-surface-container-low border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary focus:bg-white transition-all"
