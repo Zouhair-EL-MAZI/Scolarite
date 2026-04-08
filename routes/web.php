@@ -31,3 +31,7 @@ Route::prefix('admin')->group(function () {
     //     return view('admin.dashboard');
     // })->name('admin.dashboard')->middleware('auth:admin');
 });
+
+Route::get('/admin/dashboard', function () {
+    return view('sidebar.dashboard');
+})->name('admin.dashboard')->middleware('auth:admin');

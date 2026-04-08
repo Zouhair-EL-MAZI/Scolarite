@@ -32,6 +32,9 @@
             <span class="material-symbols-outlined">settings</span>
             <span class="font-medium">System Settings</span>
         </a>
+
+      
+         
     </nav>
     <button class="mx-4 my-6 py-3 px-4 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-lg font-bold text-sm shadow-lg flex items-center justify-center gap-2 active:scale-95 transition-transform">
         <span class="material-symbols-outlined text-sm">add</span>
