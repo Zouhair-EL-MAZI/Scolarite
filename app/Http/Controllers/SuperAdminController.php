@@ -26,7 +26,7 @@ class SuperAdminController extends Controller
         $activeSessions = 12;
         $securityAlerts = 0;
 
-        return view('admin.manage-admins', compact('admins', 'totalAdmins', 'activeSessions', 'securityAlerts', 'search'));
+        return view('Admin.manage-admins', compact('admins', 'totalAdmins', 'activeSessions', 'securityAlerts', 'search'));
     }
 
     public function store(Request $request)
@@ -51,7 +51,7 @@ class SuperAdminController extends Controller
 
     public function edit(Admin $admin)
     {
-        return view('admin.edit-admin', compact('admin'));
+        return view('Admin.edit-admin', compact('admin'));
     }
 
     public function update(Request $request, Admin $admin)
