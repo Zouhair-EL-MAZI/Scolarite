@@ -11,9 +11,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('requests', FORequestsController::class)->only(['index', 'create', 'store', 'show'])->middleware('auth.student');
+Route::resource('requests', FORequestsController::class)->only(['index', 'create', 'store'])->middleware('auth.student');
 Route::get('/admin/requests', [AdminController::class, 'index'])->name('admin.requests.index')->middleware('auth.admin');
 Route::get('/admin/requests/{request}', [AdminController::class, 'show'])->name('admin.requests.show')->middleware('auth.admin');
+Route::get('/requests/{request}', [FORequestsController::class, 'show'])->name('requests.show')->middleware('auth.student');
 
 
 // Authentication routes for students
@@ -27,7 +28,13 @@ Route::prefix('admin')->group(function () {
     Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login')->middleware('guest:admin');
     Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login.submit')->middleware('guest:admin');
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout')->middleware('auth:admin');
-    // Route::get('/dashboard', function () {
-    //     return view('admin.dashboard');
-    // })->name('admin.dashboard')->middleware('auth:admin');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth:admin');
+    Route::get('/students/create', [AdminController::class, 'createStudent'])->name('admin.students.create')->middleware('auth:admin');
+    Route::post('/students', [AdminController::class, 'storeStudent'])->name('admin.students.store')->middleware('auth:admin');
+    Route::get('/students/bulk-upload', [AdminController::class, 'bulkUploadForm'])->name('admin.students.bulkUpload')->middleware('auth:admin');
+    Route::post('/students/bulk-upload', [AdminController::class, 'bulkUploadStore'])->name('admin.students.bulkUpload.store')->middleware('auth:admin');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');

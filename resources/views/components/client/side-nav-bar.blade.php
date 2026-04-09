@@ -1,6 +1,6 @@
 @props(['activeRoute' => 'requests'])
 
-<aside class="h-screen w-64 fixed left-0 top-0 z-40 bg-slate-100 dark:bg-slate-950 flex flex-col p-4 gap-2 hidden lg:flex pt-20">
+<aside class="h-screen w-64 fixed left-0 top-0 z-40 bg-slate-100 dark:bg-slate-950 flex flex-col p-4 gap-2 lg:flex pt-20">
     {{-- <div class="mb-8 px-4">
         <div class="flex items-center gap-3 mb-2">
             <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">

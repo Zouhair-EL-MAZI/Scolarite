@@ -42,7 +42,7 @@
         </div>
     </td>
     <td class="px-8 py-5 text-right">
-        <a href="{{ route('requests.show', $request) }}" class="text-primary hover:bg-primary-fixed p-2 rounded-lg transition-all active:scale-95 inline-block">
+        <a href="{{ route('requests.show', $request) }}" class="text-primary hover:text-primary/80 transition-colors" aria-label="View Request Details">
             <span class="material-symbols-outlined">visibility</span>
         </a>
     </td>

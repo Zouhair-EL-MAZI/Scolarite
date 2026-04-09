@@ -1,6 +1,6 @@
 @props(['userImage' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDL4zJLKDrXqwbIvgtM_z0DLLvl5oVoAc_lV7skM7iHtNCiPZ4t4Wpyv71UlSAh6fdxxYf1ETRLu1tYjZ1xvGWTdRKBq1mGsY5TpNyuaJh9HyrfIo3yRSEwYvCMOiEuJXMIfGWH5oTP16wq80QJqjqSyeOJzE8I1EDRSHgxug20sASt0hMRRiCUyJ_91bSgLgGeKnVek8olAThqpwGqCMKxy9mcLBYD4bfku_RjyrYKIMfxUY7v-xacqvDhbXN0D0yOLDXUHrgySTE'])
 
-<header class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none flex justify-between items-center px-8 py-3 w-full">
+<header class="fixed top-0 z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none flex justify-between items-center px-8 py-3">
     <div class="flex items-center gap-8">
         <span class="text-xl font-bold tracking-tighter text-blue-900 dark:text-blue-50 font-headline">Academic Curator</span>
         <nav class="hidden md:flex gap-6 items-center font-headline text-sm font-medium tracking-tight">

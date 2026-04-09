@@ -22,7 +22,7 @@ class FORequestsController extends Controller
         if ($request->filled('search')) {
             $search = $request->input('search');
             $query->where('reference', 'like', "%{$search}%")
-                  ->orWhere('type', 'like', "%{$search}%");
+                ->orWhere('type', 'like', "%{$search}%");
         }
 
         // Filter by status
@@ -31,8 +31,8 @@ class FORequestsController extends Controller
         }
 
         $requests = $query->with('student')
-                         ->orderBy('submitted_at', 'desc')
-                         ->paginate($perPage);
+            ->orderBy('submitted_at', 'desc')
+            ->paginate($perPage);
 
         return view('fo_requests.index', [
             'requests' => $requests,
@@ -71,7 +71,7 @@ class FORequestsController extends Controller
         // Validate type-specific fields
         $typeRules = Request::typeRules($type);
         $typeValidated = $request->validate($typeRules);
-        
+
         // Only keep fields defined in typeRules
         $typeData = array_intersect_key($typeValidated, array_flip(array_keys($typeRules)));
 
@@ -93,19 +93,15 @@ class FORequestsController extends Controller
         ]);
 
         return redirect()->route('requests.index')
-                       ->with('success', 'Request submitted successfully. Your reference number is: ' . $reference);
+            ->with('success', 'Request submitted successfully. Your reference number is: ' . $reference);
     }
 
     /**
-     * Display the specified request
+     * Display the specified request.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        $student = auth('student')->user();
-        $request = Request::with('student')
-                         ->where('student_id', $student->id)
-                         ->findOrFail($id);
-        return view('fo_requests.show', ['request' => $request]);
+        return view('fo_requests.show', compact('request'));
     }
 
     /**
@@ -115,8 +111,8 @@ class FORequestsController extends Controller
     {
         $year = now()->year;
         $lastRequest = Request::where('reference', 'like', "REQ-{$year}-%")
-                             ->orderBy('id', 'desc')
-                             ->first();
+            ->orderBy('id', 'desc')
+            ->first();
 
         if (!$lastRequest) {
             $nextNumber = 1;
