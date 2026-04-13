@@ -32,8 +32,14 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth:admin');
     Route::get('/students/create', [AdminController::class, 'createStudent'])->name('admin.students.create')->middleware('auth:admin');
     Route::post('/students', [AdminController::class, 'storeStudent'])->name('admin.students.store')->middleware('auth:admin');
+    // Bulk upload routes
     Route::get('/students/bulk-upload', [AdminController::class, 'bulkUploadForm'])->name('admin.students.bulkUpload')->middleware('auth:admin');
     Route::post('/students/bulk-upload', [AdminController::class, 'bulkUploadStore'])->name('admin.students.bulkUpload.store')->middleware('auth:admin');
+    // Notification routes
+    Route::get('/notifications/send', [AdminController::class, 'announcementForm'])->name('admin.notifications.create')->middleware('auth:admin');
+    Route::post('/notifications/send', [AdminController::class, 'sendAnnouncement'])->name('admin.notifications.send')->middleware('auth:admin');
+    Route::get('/notifications/history', [AdminController::class, 'notificationsHistory'])->name('admin.notifications.history')->middleware('auth:admin');
+
     Route::middleware(['auth.admin', 'super.admin'])->name('admin.manage.')->group(function () {
         Route::resource('manage-admins', SuperAdminController::class)
             ->parameters(['manage-admins' => 'admin'])
