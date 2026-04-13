@@ -3,7 +3,7 @@
     <div class="col-span-12 md:col-span-5 bg-surface-container-low p-2 rounded-xl flex items-center">
         <span class="material-symbols-outlined px-3 text-slate-400">search</span>
         <input name="search" class="bg-transparent border-none focus:ring-0 w-full text-sm font-medium"
-            placeholder="Rechercher par nom d'étudiant, numéro Apogee..." type="text" value="{{ request('search') }}" />
+            placeholder="{{ __('admin.search_placeholder') }}" type="text" value="{{ request('search') }}" />
     </div>
 
     <!-- Request Type Filter -->
@@ -11,7 +11,7 @@
         <span class="material-symbols-outlined text-slate-400 mr-2 text-sm">filter_list</span>
         <select name="type" onchange="this.form.submit()"
             class="bg-transparent border-none focus:ring-0 w-full text-sm font-medium appearance-none">
-            <option value="">Type de demande</option>
+            <option value="">{{ __('admin.type_filter_placeholder') }}</option>
             @foreach ($requestTypes as $type)
                 <option value="{{ $type }}" {{ request('type') === $type ? 'selected' : '' }}>
                     {{ $type }}
@@ -25,7 +25,7 @@
         <span class="material-symbols-outlined text-slate-400 mr-2 text-sm">radio_button_checked</span>
         <select name="status" onchange="this.form.submit()"
             class="bg-transparent border-none focus:ring-0 w-full text-sm font-medium appearance-none">
-            <option value="">Statut</option>
+            <option value="">{{ __('admin.status_filter_placeholder') }}</option>
             @foreach ($statuses as $status)
                 <option value="{{ $status }}" {{ request('status') === $status ? 'selected' : '' }}>
                     {{ $status }}
@@ -39,12 +39,12 @@
         <button type="submit" name="export" value="1"
             class="flex-1 bg-surface-container-highest text-on-surface font-bold py-2 rounded-xl text-sm hover:bg-slate-300 transition-colors flex items-center justify-center gap-2">
             <span class="material-symbols-outlined text-sm">file_download</span>
-            Exporter
+            {{ __('admin.export') }}
         </button>
         <button type="submit"
             class="flex-1 bg-primary text-on-primary font-bold py-2 rounded-xl text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
             <span class="material-symbols-outlined text-sm">bolt</span>
-            Action en masse
+            {{ __('admin.bulk_action') }}
         </button>
     </div>
 </form>

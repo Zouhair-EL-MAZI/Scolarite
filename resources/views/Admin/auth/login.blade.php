@@ -6,9 +6,15 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Admin Login | The Academic Curator</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -101,7 +107,8 @@
         <div class="w-full max-w-6xl rounded-[32px] overflow-hidden shadow-[0_28px_70px_rgba(15,23,42,0.12)]">
             <div class="grid grid-cols-1 md:grid-cols-2 bg-white">
                 <!-- Left Branding Panel -->
-                <div class="hidden md:flex flex-col justify-between bg-[#0f2755] p-16 text-white relative overflow-hidden">
+                <div
+                    class="hidden md:flex flex-col justify-between bg-[#0f2755] p-16 text-white relative overflow-hidden">
                     <div>
                         <div class="flex items-center gap-3 mb-10">
                             <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center">
@@ -109,11 +116,16 @@
                             </div>
                             <span class="font-headline font-bold text-lg">The Academic Curator</span>
                         </div>
-                        <h1 class="font-headline text-[2.95rem] leading-tight font-extrabold mb-6">Institutional<br />Control Center</h1>
-                        <p class="max-w-md text-slate-200/85 text-lg leading-8">Access the administrative core to manage faculty research, student curricula, and global academic outreach.</p>
+                        <h1 class="font-headline text-[2.95rem] leading-tight font-extrabold mb-6">
+                            Institutional<br />Control Center</h1>
+                        <p class="max-w-md text-slate-200/85 text-lg leading-8">Access the administrative core to manage
+                            faculty research, student curricula, and global academic outreach.</p>
                     </div>
-                    <div class="flex items-center gap-4 bg-white/10 border border-white/10 rounded-[24px] p-4 shadow-[0_16px_35px_rgba(15,23,42,0.18)] max-w-xs">
-                        <img class="w-12 h-12 rounded-full object-cover border border-white/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChAjZULxxhGEUuwHJxwAc8JLZ9bbOg-pUQgKTvgFjI3p_QNo1YMMKzxZSSGB7jKzeHs9xOYpZF0VvOkqewMyrSd5wwC6jrBav7dILjXfJjDDw5520DJeCvP6BPyD3m2vb0eAg0VsXyJowtwdQzunqtcTgjNL0zymy5HCkrp68kJV5uv5Vr75cAXNObOSOj5nXQsawSMmFMJbQtRQoAThkne9Vb4Pzg31UxVtED1BNmf-wdwdRUxlISk9nbZXQIHg11Tm804DZ1OpQ" alt="Lead Administrator avatar" />
+                    <div
+                        class="flex items-center gap-4 bg-white/10 border border-white/10 rounded-[24px] p-4 shadow-[0_16px_35px_rgba(15,23,42,0.18)] max-w-xs">
+                        <img class="w-12 h-12 rounded-full object-cover border border-white/20"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuChAjZULxxhGEUuwHJxwAc8JLZ9bbOg-pUQgKTvgFjI3p_QNo1YMMKzxZSSGB7jKzeHs9xOYpZF0VvOkqewMyrSd5wwC6jrBav7dILjXfJjDDw5520DJeCvP6BPyD3m2vb0eAg0VsXyJowtwdQzunqtcTgjNL0zymy5HCkrp68kJV5uv5Vr75cAXNObOSOj5nXQsawSMmFMJbQtRQoAThkne9Vb4Pzg31UxVtED1BNmf-wdwdRUxlISk9nbZXQIHg11Tm804DZ1OpQ"
+                            alt="Lead Administrator avatar" />
                         <div>
                             <p class="font-semibold text-white">Dr. Elias Thorne</p>
                             <p class="text-sm text-slate-200/70">Head of Global Research</p>
@@ -130,9 +142,12 @@
                                 <span class="material-symbols-outlined text-[#0f2755] text-3xl">school</span>
                                 <span class="font-headline font-bold text-xl text-[#0f2755]">The Academic Curator</span>
                             </div>
-                            <span class="inline-flex items-center justify-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.26em] text-slate-500 mb-4">Admin Portal</span>
-                            <h2 class="font-headline text-4xl font-extrabold text-slate-950 mb-3">Welcome Back</h2>
-                            <p class="text-slate-600 text-base">Please enter your institutional credentials.</p>
+                            <span
+                                class="inline-flex items-center justify-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.26em] text-slate-500 mb-4">{{ __('admin.admin_portal') }}</span>
+                            <h2 class="font-headline text-4xl font-extrabold text-slate-950 mb-3">
+                                {{ __('admin.welcome_back') }}
+                            </h2>
+                            <p class="text-slate-600 text-base">{{ __('admin.login_prompt') }}</p>
                         </div>
                         <form method="POST" action="{{ route('admin.login.submit') }}" class="space-y-6">
                             @csrf
@@ -145,36 +160,47 @@
                                 </div>
                             @endif
                             <div>
-                                <label for="email" class="block text-sm font-semibold text-slate-700 mb-2">University Email</label>
+                                <label for="email"
+                                    class="block text-sm font-semibold text-slate-700 mb-2">{{ __('admin.university_email') }}</label>
                                 <div class="relative">
-                                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">alternate_email</span>
-                                    <input id="email" name="email" type="email" value="{{ old('email') }}" placeholder="admin.name@university.edu" class="w-full rounded-2xl border border-slate-200 bg-slate-100 px-4 pl-12 py-4 text-slate-900 placeholder:text-slate-400 focus:border-[#0f2755] focus:outline-none focus:ring-2 focus:ring-[#0f2755]/10" />
+                                    <span
+                                        class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">alternate_email</span>
+                                    <input id="email" name="email" type="email" value="{{ old('email') }}"
+                                        placeholder="admin.name@university.edu"
+                                        class="w-full rounded-2xl border border-slate-200 bg-slate-100 px-4 pl-12 py-4 text-slate-900 placeholder:text-slate-400 focus:border-[#0f2755] focus:outline-none focus:ring-2 focus:ring-[#0f2755]/10" />
                                 </div>
                             </div>
                             <div>
                                 <div class="flex items-center justify-between mb-2">
-                                    <label for="password" class="text-sm font-semibold text-slate-700">Password</label>
-                                    <a href="#" class="text-sm font-semibold text-[#0f2755] hover:underline">Forgot Password?</a>
+                                    <label for="password"
+                                        class="text-sm font-semibold text-slate-700">{{ __('admin.password') }}</label>
+                                    <a href="#"
+                                        class="text-sm font-semibold text-[#0f2755] hover:underline">{{ __('admin.forgot_password') }}</a>
                                 </div>
                                 <div class="relative">
-                                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">lock</span>
-                                    <input id="password" name="password" type="password" placeholder="••••••••" class="w-full rounded-2xl border border-slate-200 bg-slate-100 px-4 pl-12 py-4 text-slate-900 placeholder:text-slate-400 focus:border-[#0f2755] focus:outline-none focus:ring-2 focus:ring-[#0f2755]/10" />
-                                    <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#0f2755]">
+                                    <span
+                                        class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">lock</span>
+                                    <input id="password" name="password" type="password" placeholder="••••••••"
+                                        class="w-full rounded-2xl border border-slate-200 bg-slate-100 px-4 pl-12 py-4 text-slate-900 placeholder:text-slate-400 focus:border-[#0f2755] focus:outline-none focus:ring-2 focus:ring-[#0f2755]/10" />
+                                    <button type="button"
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#0f2755]">
                                         <span class="material-symbols-outlined">visibility</span>
                                     </button>
                                 </div>
                             </div>
                             <div class="flex items-center gap-3">
                                 <input id="remember" name="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }} class="h-5 w-5 rounded border-slate-300 text-[#0f2755] focus:ring-[#0f2755]" />
-                                <label for="remember" class="text-sm text-slate-600 font-medium">Stay logged in for 24 hours</label>
+                                <label for="remember"
+                                    class="text-sm text-slate-600 font-medium">{{ __('admin.stay_logged_in') }}</label>
                             </div>
-                            <button type="submit" class="w-full rounded-2xl bg-[#0f2755] px-6 py-4 text-white text-base font-semibold shadow-[0_16px_30px_rgba(15,23,42,0.18)] hover:bg-[#0b1f46] transition-colors duration-200 flex items-center justify-center gap-2">
-                                Admin Sign In
+                            <button type="submit"
+                                class="w-full rounded-2xl bg-[#0f2755] px-6 py-4 text-white text-base font-semibold shadow-[0_16px_30px_rgba(15,23,42,0.18)] hover:bg-[#0b1f46] transition-colors duration-200 flex items-center justify-center gap-2">
+                                {{ __('admin.admin_sign_in') }}
                                 <span class="material-symbols-outlined">arrow_forward</span>
                             </button>
                         </form>
                         <div class="mt-12 border-t border-slate-200 pt-8">
-                            <p class="text-center text-sm leading-6 text-slate-500">This system is for authorized personnel only. All access and activity is logged and monitored. Unauthorized access attempts will be prosecuted to the full extent of the law.</p>
+                            <p class="text-center text-sm leading-6 text-slate-500">{{ __('admin.auth_notice') }}</p>
                         </div>
                     </div>
                 </div>
