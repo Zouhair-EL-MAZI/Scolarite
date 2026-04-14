@@ -30,11 +30,6 @@ class AdminAuthController extends Controller
         if ($admin && Hash::check($request->password, $admin->password)) {
             Auth::guard('admin')->login($admin);
 
-            // Check role and redirect accordingly
-            if ($admin->role === 'super_admin') {
-                return redirect()->route('admin.manage.index')->with('success', 'Welcome Super Admin!');
-            }
-
             return redirect()->route('admin.requests.index')->with('success', 'Welcome Admin!');
         }
 

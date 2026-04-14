@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginStudentsController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\StudentProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,6 +14,11 @@ Route::get('/', function () {
 });
 
 Route::resource('requests', FORequestsController::class)->only(['index', 'create', 'store'])->middleware('auth.student');
+Route::get('/profile', [StudentProfileController::class, 'show'])->name('profile.show')->middleware('auth:student');
+Route::post('/profile', [StudentProfileController::class, 'update'])->name('profile.update')->middleware('auth:student');
+Route::get('/profile/change-password', [StudentProfileController::class, 'changePasswordForm'])->name('profile.password.form')->middleware('auth:student');
+Route::post('/profile/change-password', [StudentProfileController::class, 'updatePassword'])->name('profile.password.update')->middleware('auth:student');
+
 Route::get('/admin/requests', [AdminController::class, 'index'])->name('admin.requests.index')->middleware('auth.admin');
 Route::get('/admin/requests/{request}', [AdminController::class, 'show'])->name('admin.requests.show')->middleware('auth.admin');
 Route::get('/requests/{request}', [FORequestsController::class, 'show'])->name('requests.show')->middleware('auth.student');

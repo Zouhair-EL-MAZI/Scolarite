@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -18,19 +17,16 @@
 </style>
 </head>
 <body class="bg-surface text-on-surface">
-<!-- TopNavBar -->
-<x-client.top-nav-bar />
 
-<!-- SideNavBar -->
-<x-client.side-nav-bar :activeRoute="$activeRoute ?? 'requests'" />
+    <x-client.top-nav-bar />
+    <x-client.sidebar />
 
-<!-- Main Content Canvas -->
-<main class="lg:ml-64 pt-24 px-8 pb-12 min-h-screen bg-surface">
-    <div class="max-w-6xl mx-auto">
-        {{ $slot }}
-    </div>
-</main>
+    <!-- Main Content Canvas -->
+    <main class="lg:ml-64 pt-24 px-8 pb-12 min-h-screen bg-surface">
+        <div class="max-w-6xl mx-auto">
+            {{ $slot }}
+        </div>
+    </main>
 
-<!-- BottomNavBar (Mobile Only) -->
-{{-- <x-bottom-nav-bar :activeRoute="$activeRoute ?? 'requests'" /> --}}
-</body></html>
+</body>
+</html>
