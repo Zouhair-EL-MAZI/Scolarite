@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Notifications\AdminAnnouncementNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 
 class AdminController extends Controller
@@ -32,10 +34,18 @@ class AdminController extends Controller
                 $query->where('status', $status);
             })
             ->when($request->search, function ($query, $search) {
-                $query->whereHas('student', function ($studentQuery) use ($search) {
-                    $studentQuery->where('apogee_number', 'like', "%{$search}%")
-                        ->orWhere('first_name', 'like', "%{$search}%")
-                        ->orWhere('last_name', 'like', "%{$search}%");
+                $terms = preg_split('/\s+/', trim($search));
+
+                $query->whereHas('student', function ($studentQuery) use ($terms) {
+                    foreach ($terms as $term) {
+                        $studentQuery->where(function ($studentSubQuery) use ($term) {
+                            $studentSubQuery->where('apogee_number', 'like', "%{$term}%")
+                                ->orWhere('cne', 'like', "%{$term}%")
+                                ->orWhere('first_name', 'like', "%{$term}%")
+                                ->orWhere('last_name', 'like', "%{$term}%")
+                                ->orWhereRaw("CONCAT(first_name, ' ', last_name) LIKE ?", ["%{$term}%"]);
+                        });
+                    }
                 });
             })
             ->latest();
@@ -147,6 +157,38 @@ class AdminController extends Controller
     {
         $request->load('student');
         return view('Admin.Request_Detail', compact('request'));
+    }
+
+    public function announcementForm()
+    {
+        return view('Admin.notify-all');
+    }
+
+    public function sendAnnouncement(Request $request)
+    {
+        $validated = $request->validate([
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        $students = Student::whereNotNull('email')->where('email', '!=', '')->get();
+
+        if ($students->isEmpty()) {
+            return back()->with('error', 'Aucun étudiant trouvé avec une adresse email valide.');
+        }
+
+        Notification::send($students, new AdminAnnouncementNotification($validated));
+
+        return redirect()->route('admin.dashboard')->with('success', 'Annonce envoyée à tous les étudiants.');
+    }
+
+    public function notificationsHistory()
+    {
+        $notifications = \Illuminate\Notifications\DatabaseNotification::where('type', AdminAnnouncementNotification::class)
+            ->latest()
+            ->paginate(20);
+
+        return view('Admin.notifications-history', compact('notifications'));
     }
 
     public function dashboard()
