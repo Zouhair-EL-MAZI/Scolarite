@@ -113,7 +113,15 @@
                                 </div>
                                 <div class="space-y-2">
                                     <p class="text-xs uppercase tracking-[0.28em] text-slate-500">Status</p>
-                                    <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-sm font-semibold text-slate-700">{{ ucfirst($student->status) }}</span>
+                                    @php
+                                        $studentStatusClasses = [
+                                            'active' => ['bg-emerald-50', 'text-emerald-700'],
+                                            'inactive' => ['bg-slate-100', 'text-slate-700'],
+                                            'suspended' => ['bg-rose-50', 'text-rose-700'],
+                                        ];
+                                        $studentStatusClass = $studentStatusClasses[$student->status] ?? ['bg-slate-100', 'text-slate-700'];
+                                    @endphp
+                                    <span class="inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold {{ $studentStatusClass[0] }} {{ $studentStatusClass[1] }}">{{ ucfirst($student->status) }}</span>
                                 </div>
                                 <div class="space-y-2">
                                     <p class="text-xs uppercase tracking-[0.28em] text-slate-500">Created</p>

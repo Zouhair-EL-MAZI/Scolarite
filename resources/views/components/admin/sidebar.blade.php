@@ -47,20 +47,10 @@
         @endif
         <a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all ease-in-out duration-150"
             href="#">
-            <span class="material-symbols-outlined">analytics</span>
-            <span class="font-medium">{{ __('admin.reports') }}</span>
-        </a>
-        <a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all ease-in-out duration-150"
-            href="#">
             <span class="material-symbols-outlined">settings</span>
             <span class="font-medium">{{ __('admin.system_settings') }}</span>
         </a>
     </nav>
-    <button
-        class="mx-4 my-6 py-3 px-4 bg-linear-to-br from-primary to-primary-container text-on-primary rounded-lg font-bold text-sm shadow-lg flex items-center justify-center gap-2 active:scale-95">
-        <span class="material-symbols-outlined text-sm">add</span>
-        {{ __('admin.new_report') }}
-    </button>
     <div class="border-t border-slate-200 dark:border-slate-800 pt-4 space-y-1">
         <a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-200 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 rounded-lg transition-all"
             href="#">

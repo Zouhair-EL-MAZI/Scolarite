@@ -103,7 +103,15 @@
                                 <td class="p-5 text-sm text-slate-700">{{ $student->cne ?? 'N/A' }}</td>
                                 <td class="p-5 text-sm text-slate-700">{{ $student->department }}</td>
                                 <td class="p-5">
-                                    <span class="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700">
+                                    @php
+                                        $statusClasses = [
+                                            'active' => ['bg-emerald-50', 'text-emerald-700'],
+                                            'inactive' => ['bg-slate-100', 'text-slate-700'],
+                                            'suspended' => ['bg-rose-50', 'text-rose-700'],
+                                        ];
+                                        $statusClass = $statusClasses[$student->status] ?? ['bg-slate-100', 'text-slate-700'];
+                                    @endphp
+                                    <span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium {{ $statusClass[0] }} {{ $statusClass[1] }}">
                                         {{ ucfirst($student->status) }}
                                     </span>
                                 </td>

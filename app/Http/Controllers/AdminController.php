@@ -252,6 +252,12 @@ class AdminController extends Controller
         ));
     }
 
+    public function profile()
+    {
+        $admin = auth('admin')->user();
+        return view('Admin.profile', compact('admin'));
+    }
+
     // Toggle reclamations open/close status
     public function toggleReclamations(Request $request)
     {
