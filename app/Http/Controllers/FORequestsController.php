@@ -21,13 +21,17 @@ class FORequestsController extends Controller
         // Search by reference or type
         if ($request->filled('search')) {
             $search = $request->input('search');
-            $query->where('reference', 'like', "%{$search}%")
-                ->orWhere('type', 'like', "%{$search}%");
+            $query->where('reference', 'like', "%{$search}%");
         }
 
         // Filter by status
         if ($request->filled('status')) {
             $query->where('status', $request->input('status'));
+            }
+            
+            // Filter by type
+        if ($request->filled('type')) {
+            $query->where('type', $request->input('type'));
         }
 
         $requests = $query->with('student')

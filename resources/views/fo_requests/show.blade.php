@@ -1,30 +1,28 @@
-<x-client.app-layout title="Request Details" activeRoute="requests">
+<x-client.admin-layout title="Request Details" activeRoute="requests">
     <!-- Page Header -->
-    <div class="mb-8">
-        <div class="flex items-center justify-between mb-4">
-            <div>
-                <h1 class="text-3xl font-bold text-on-surface mb-2">Request Details</h1>
-                <p class="text-secondary">Reference: <span class="font-mono font-semibold text-primary">{{ $request->reference }}</span></p>
-            </div>
-            <a href="{{ route('requests.index') }}" class="text-primary hover:text-primary/80 flex items-center gap-2">
-                <span class="material-symbols-outlined">arrow_back</span>
-                Back to Requests
-            </a>
-        </div>
-    </div>
+    <x-client.admin-header 
+        title="Request Details"
+        :description="'Reference: ' . $request->reference"
+        :breadcrumb="[
+            ['label' => 'My Requests', 'url' => route('requests.index')],
+            ['label' => 'Request ' . $request->reference]
+        ]"
+    >
+        <x-client.admin-button variant="outlined" icon="arrow_back" href="{{ route('requests.index') }}">
+            Back to Requests
+        </x-client.admin-button>
+    </x-client.admin-header>
 
     <!-- Main Content Section -->
     <div class="grid grid-cols-3 gap-6">
         <!-- Left Column: Request Details -->
         <div class="col-span-2 space-y-6">
-            <!-- Core Details Card -->
-            <div class="bg-surface-container-lowest rounded-2xl p-8 shadow-sm border border-outline-variant/10">
-                <h2 class="text-xl font-bold text-on-surface mb-6">Request Information</h2>
-                
+            <!-- Request Information Section -->
+            <x-client.admin-section title="Request Information">
                 <div class="grid grid-cols-2 gap-6">
                     <!-- Type -->
                     <div>
-                        <label class="text-sm text-secondary font-semibold block mb-2">Request Type</label>
+                        <label class="text-sm text-on-surface-variant font-semibold block mb-2">Request Type</label>
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                                 <span class="material-symbols-outlined text-primary">description</span>
@@ -35,7 +33,7 @@
 
                     <!-- Status -->
                     <div>
-                        <label class="text-sm text-secondary font-semibold block mb-2">Status</label>
+                        <label class="text-sm text-on-surface-variant font-semibold block mb-2">Status</label>
                         @php
                             $statusColors = [
                                 'approved' => 'bg-green-100 text-green-700',
@@ -53,18 +51,18 @@
 
                     <!-- Submitted Date -->
                     <div>
-                        <label class="text-sm text-secondary font-semibold block mb-2">Submitted Date</label>
+                        <label class="text-sm text-on-surface-variant font-semibold block mb-2">Submitted Date</label>
                         <p class="text-on-surface">{{ $request->submitted_at?->format('M d, Y') ?? $request->created_at->format('M d, Y') }}</p>
                     </div>
 
                     <!-- Reviewed Date -->
                     <div>
-                        <label class="text-sm text-secondary font-semibold block mb-2">Reviewed Date</label>
+                        <label class="text-sm text-on-surface-variant font-semibold block mb-2">Reviewed Date</label>
                         <p class="text-on-surface">
                             @if ($request->reviewed_at)
                                 {{ $request->reviewed_at->format('M d, Y \a\t h:i A') }}
                             @else
-                                <span class="text-secondary italic">Not yet reviewed</span>
+                                <span class="text-on-surface-variant italic">Not yet reviewed</span>
                             @endif
                         </p>
                     </div>
@@ -73,21 +71,19 @@
                 <!-- Comment Section -->
                 @if ($request->comment)
                     <div class="mt-6 pt-6 border-t border-outline-variant/10">
-                        <label class="text-sm text-secondary font-semibold block mb-2">Comments</label>
+                        <label class="text-sm text-on-surface-variant font-semibold block mb-2">Comments</label>
                         <p class="text-on-surface whitespace-pre-wrap">{{ $request->comment }}</p>
                     </div>
                 @endif
-            </div>
+            </x-client.admin-section>
 
-            <!-- Type-Specific Details Card -->
+            <!-- Type-Specific Details Section -->
             @if ($request->details && count($request->details) > 0)
-                <div class="bg-surface-container-lowest rounded-2xl p-8 shadow-sm border border-outline-variant/10">
-                    <h2 class="text-xl font-bold text-on-surface mb-6">{{ $request->typeLabel() }} Details</h2>
-                    
+                <x-client.admin-section title="{{ $request->typeLabel() }} Details">
                     <div class="space-y-4">
                         @foreach ($request->details as $key => $value)
                             <div class="flex justify-between items-start py-3 border-b border-outline-variant/5 last:border-0">
-                                <label class="text-sm text-secondary font-semibold">
+                                <label class="text-sm text-on-surface-variant font-semibold">
                                     {{ ucfirst(str_replace('_', ' ', $key)) }}
                                 </label>
                                 <div class="text-right">
@@ -107,19 +103,17 @@
                             </div>
                         @endforeach
                     </div>
-                </div>
+                </x-client.admin-section>
             @endif
         </div>
 
         <!-- Right Column: Sidebar -->
         <div class="col-span-1 space-y-6">
             <!-- Student Information Card -->
-            <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-outline-variant/10">
-                <h3 class="text-lg font-bold text-on-surface mb-4">Student Information</h3>
-                
+            <x-client.admin-section title="Student Information">
                 <div class="space-y-4">
                     <div>
-                        <label class="text-xs text-secondary font-semibold block mb-1">Name</label>
+                        <label class="text-xs text-on-surface-variant font-semibold block mb-1">Name</label>
                         <p class="text-on-surface font-medium">
                             {{ $request->student->first_name }} {{ $request->student->last_name }}
                         </p>
@@ -127,31 +121,29 @@
                     
                     @if ($request->student->apogee_number)
                         <div>
-                            <label class="text-xs text-secondary font-semibold block mb-1">APOGEE Number</label>
+                            <label class="text-xs text-on-surface-variant font-semibold block mb-1">APOGEE Number</label>
                             <p class="text-on-surface font-mono">{{ $request->student->apogee_number }}</p>
                         </div>
                     @endif
 
                     @if ($request->student->email)
                         <div>
-                            <label class="text-xs text-secondary font-semibold block mb-1">Email</label>
+                            <label class="text-xs text-on-surface-variant font-semibold block mb-1">Email</label>
                             <p class="text-on-surface break-all">{{ $request->student->email }}</p>
                         </div>
                     @endif
 
                     @if ($request->student->department)
                         <div>
-                            <label class="text-xs text-secondary font-semibold block mb-1">Department</label>
+                            <label class="text-xs text-on-surface-variant font-semibold block mb-1">Department</label>
                             <p class="text-on-surface">{{ $request->student->department }}</p>
                         </div>
                     @endif
                 </div>
-            </div>
+            </x-client.admin-section>
 
             <!-- Timeline Card -->
-            <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-outline-variant/10">
-                <h3 class="text-lg font-bold text-on-surface mb-4">Timeline</h3>
-                
+            <x-client.admin-section title="Timeline">
                 <div class="space-y-4 relative">
                     <!-- Submitted -->
                     <div class="flex gap-4">
@@ -160,7 +152,7 @@
                             <div class="w-0.5 h-8 bg-outline-variant/20 mt-2"></div>
                         </div>
                         <div>
-                            <p class="text-xs text-secondary font-semibold">SUBMITTED</p>
+                            <p class="text-xs text-on-surface-variant font-semibold">SUBMITTED</p>
                             <p class="text-on-surface text-sm">
                                 {{ $request->submitted_at?->format('M d, Y') ?? $request->created_at->format('M d, Y') }}
                             </p>
@@ -174,7 +166,7 @@
                                 <div class="w-3 h-3 rounded-full bg-primary"></div>
                             </div>
                             <div>
-                                <p class="text-xs text-secondary font-semibold">REVIEWED</p>
+                                <p class="text-xs text-on-surface-variant font-semibold">REVIEWED</p>
                                 <p class="text-on-surface text-sm">
                                     {{ $request->reviewed_at->format('M d, Y \a\t h:i A') }}
                                 </p>
@@ -186,13 +178,13 @@
                                 <div class="w-3 h-3 rounded-full bg-outline-variant/30"></div>
                             </div>
                             <div>
-                                <p class="text-xs text-secondary font-semibold">PENDING REVIEW</p>
-                                <p class="text-secondary text-sm">Awaiting administrator review</p>
+                                <p class="text-xs text-on-surface-variant font-semibold">PENDING REVIEW</p>
+                                <p class="text-on-surface-variant text-sm">Awaiting administrator review</p>
                             </div>
                         </div>
                     @endif
                 </div>
-            </div>
+            </x-client.admin-section>
         </div>
     </div>
-</x-client.app-layout>
+</x-client.admin-layout>

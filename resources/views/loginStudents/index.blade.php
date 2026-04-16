@@ -136,6 +136,24 @@
                         </div>
                     </div>
                 @endif
+                <!-- Email Field -->
+                <div class="group">
+                    <label
+                        class="block font-label text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-secondary mb-2 group-focus-within:text-primary transition-colors"
+                        for="email">
+                        Email
+                    </label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <span class="material-symbols-outlined text-outline text-lg sm:text-xl">mail</span>
+                        </div>
+                        <input
+                            class="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-3 sm:py-4 bg-surface-container-highest border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 rounded-t-lg text-on-surface text-sm sm:text-base font-medium placeholder:text-outline/60 transition-all"
+                            id="email" name="email" placeholder="e.g. student@example.ma" type="email"
+                            value="{{ old('email') }}" />
+                    </div>
+                    <p class="mt-1 sm:mt-2 text-[10px] sm:text-[11px] text-outline">Your Personal or Academic email</p>
+                </div>
                 <!-- Apogee Number or CNE Field -->
                 <div class="group">
                     <label

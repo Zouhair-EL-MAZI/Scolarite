@@ -18,8 +18,8 @@
 </head>
 <body class="bg-surface text-on-surface">
 
-    <x-client.top-nav-bar />
     <x-client.sidebar />
+    <x-client.top-nav-bar />
 
     <!-- Main Content Canvas -->
     <main class="lg:ml-64 pt-24 px-8 pb-12 min-h-screen bg-surface">

@@ -12,10 +12,10 @@
     
     <div class="flex items-center space-x-4">
         <!-- New Request Button -->
-        <a href="{{ route('requests.create') }}" class="bg-white text-on-primary px-4 py-1.5 rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-95 flex items-center gap-2">
+        {{-- <a href="{{ route('requests.create') }}" class="bg-white text-on-primary px-4 py-1.5 rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-95 flex items-center gap-2">
             <span class="material-symbols-outlined text-base">add</span>
             <span class="hidden sm:inline">New Request</span>
-        </a>
+        </a> --}}
 
         <!-- Notifications -->
         <button class="p-2 text-slate-500 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 rounded-full transition-colors">
