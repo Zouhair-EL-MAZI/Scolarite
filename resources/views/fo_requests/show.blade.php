@@ -8,9 +8,7 @@
             ['label' => 'Request ' . $request->reference]
         ]"
     >
-        <x-client.admin-button variant="outlined" icon="arrow_back" href="{{ route('requests.index') }}">
-            Back to Requests
-        </x-client.admin-button>
+
     </x-client.admin-header>
 
     <!-- Main Content Section -->

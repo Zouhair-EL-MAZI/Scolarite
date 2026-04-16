@@ -112,7 +112,7 @@
         <div class="absolute inset-0 bg-academic-overlay backdrop-blur-sm"></div>
     </div>
     <!-- Login Container -->
-    <main class="relative z-10 w-[95%] sm:w-[85%] max-w-[450px] px-3 py-6 sm:px-4 md:px-6 md:py-8">
+    <main class="relative z-10 w-[95%] sm:w-[85%] max-w-[500px] px-3 py-6 sm:px-4 md:px-6 md:py-8">
         <div
             class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col items-center p-4 sm:p-6 md:p-10 lg:p-12">
             <!-- Brand Identity Section -->

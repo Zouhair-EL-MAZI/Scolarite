@@ -57,7 +57,8 @@ class FORequestsController extends Controller
 
         if (!$this->reclamationsEnabled()) {
             return redirect()->route('requests.index')
-                ->with('error', 'Reclamations are currently closed. Please try again later.');
+                ->with('error', 'Reclamations are currently closed. Please try again later.')
+                ->with('step', 1);;
         }
 
         return view('fo_requests.create', [
