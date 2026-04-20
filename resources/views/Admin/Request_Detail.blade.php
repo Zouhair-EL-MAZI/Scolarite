@@ -116,8 +116,8 @@
             <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-8">
                 <div class="flex items-start justify-between gap-4">
                     <div>
-                        <h3 class="text-2xl font-bold text-slate-900">Change status</h3>
-                        <p class="mt-2 text-sm text-slate-500">Select a new status for this request.</p>
+                        <h3 class="text-2xl font-bold text-slate-900">Update Request</h3>
+                        <p class="mt-2 text-sm text-slate-500">Select a new status and add a comment for this request.</p>
                     </div>
                     <button type="button" onclick="document.getElementById('statusModal').classList.add('hidden')" class="text-slate-500 hover:text-slate-900">Close</button>
                 </div>
@@ -130,6 +130,11 @@
                             <option value="{{ $key }}" {{ $request->status === $key ? 'selected' : '' }}>{{ $label }}</option>
                         @endforeach
                     </select>
+                     <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Comment</label>
+                        <textarea name="admin_comment"  rows="4" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none" placeholder="Add comment about this status update...">
+                        </textarea>
+                    </div>
                     <div class="flex justify-end gap-3 pt-4">
                         <button type="button" onclick="document.getElementById('statusModal').classList.add('hidden')" class="rounded-2xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50">Cancel</button>
                         <button type="submit" class="rounded-2xl bg-blue-950 px-5 py-3 text-sm font-semibold text-white hover:bg-blue-900">Save</button>

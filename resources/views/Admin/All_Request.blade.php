@@ -56,7 +56,6 @@
                                         'approved' => ['bg-emerald-50', 'text-emerald-700', 'bg-emerald-500'],
                                         'rejected' => ['bg-rose-50', 'text-rose-700', 'bg-rose-500'],
                                         'in_review' => ['bg-sky-50', 'text-sky-700', 'bg-sky-500'],
-                                        'archived' => ['bg-slate-50', 'text-slate-700', 'bg-slate-500'],
                                     ];
                                     $colors = $statusColors[$normalizedStatus] ?? ['bg-gray-100', 'text-gray-800', 'bg-gray-500'];
                                     $statusLabel = ucwords(str_replace('_', ' ', $normalizedStatus));
@@ -133,6 +132,12 @@
                         @endforeach
                     </select>
                 </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">Comment</label>
+                <textarea name="admin_comment"  rows="4" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none" placeholder="Add comment about this status update...">
+                </textarea>
+            </div>
 
                 <div class="flex gap-3 pt-6">
                     <button type="button" onclick="closeStatusModal()" class="flex-1 px-4 py-3 border border-slate-300 text-slate-700 font-semibold rounded-xl hover:bg-slate-50 transition">

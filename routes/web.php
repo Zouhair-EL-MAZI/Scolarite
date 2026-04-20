@@ -37,7 +37,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login')->middleware('guest:admin');
     Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login.submit')->middleware('guest:admin');
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout')->middleware('auth:admin');
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth:admin');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth.admin');
     Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile')->middleware('auth:admin');
     Route::post('/reclamations', [AdminController::class, 'toggleReclamations'])->name('admin.reclamations.toggle')->middleware('auth:admin');
     Route::get('/students', [AdminController::class, 'studentsIndex'])->name('admin.students.index')->middleware('auth:admin');

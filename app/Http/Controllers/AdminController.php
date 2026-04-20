@@ -218,11 +218,12 @@ class AdminController extends Controller
     {
         $validated = $httpRequest->validate([
             'status' => ['required', Rule::in(array_keys(\App\Models\Request::STATUSES))],
+            'admin_comment' => 'nullable|string|max:1000',
         ]);
 
         $request->update($validated);
 
-        return back()->with('success', 'Request status updated successfully.');
+        return back()->with('success', 'Request updated successfully.');
     }
 
     public function destroy(\App\Models\Request $request)
@@ -274,6 +275,8 @@ class AdminController extends Controller
 
         // Check reclamations status from Redis cache
         $reclamationsEnabled = Cache::store(config('cache.default'))->get('reclamations_enabled', true) ?? true;
+        $typeNames = \App\Models\Request::TYPES;
+        $statusNames = \App\Models\Request::STATUSES; 
 
         return view('Admin.dashboard', compact(
             'totalRequests',
@@ -282,8 +285,10 @@ class AdminController extends Controller
             'rejected',
             'recentRequests',
             'typeVolumes',
+            'typeNames',
             'pendingActions',
             'statusDistribution',
+            'statusNames',
             'reclamationsEnabled' // Pass the reclamations status to the view
         ));
     }

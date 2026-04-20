@@ -43,7 +43,6 @@ class Request extends Model
         'in_review' => 'In Review',
         'approved' => 'Approved',
         'rejected' => 'Rejected',
-        'archived' => 'Archived',
     ];
 
     public function student()

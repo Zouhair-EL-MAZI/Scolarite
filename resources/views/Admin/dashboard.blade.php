@@ -96,7 +96,7 @@
                                 <li>
                                     <div
                                         class="flex items-center justify-between text-sm text-slate-600 dark:text-slate-300 mb-2">
-                                        <span>{{ $typeVolume['type'] }}</span>
+                                        <span>{{ $typeNames[$typeVolume['type']] }}</span>
                                         <span
                                             class="font-semibold text-slate-900 dark:text-white">{{ $typeVolume['percent'] }}%</span>
                                     </div>
@@ -176,7 +176,7 @@
                         @foreach($statusDistribution as $dist)
                             <div>
                                 <div class="flex items-center justify-between text-sm mb-2">
-                                    <span class="capitalize">{{ $dist['status'] }}</span>
+                                    <span class="capitalize">{{ $statusNames[$dist['status']] }}</span>
                                     <span class="font-semibold text-slate-900 dark:text-white">{{ $dist['percent'] }}%</span>
                                 </div>
                                 <div class="h-3 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">

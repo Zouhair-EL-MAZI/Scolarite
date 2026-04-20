@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('reference')->unique()->comment('REQ-YYYY-XXX format');
             $table->foreignId('student_id')->constrained()->cascadeOnDelete();
             $table->string('type')->comment('transfer, withdrawal, transcript, etc.');
-            $table->string('status')->default('pending')->comment('pending, in_review, approved, rejected, archived');
+            $table->string('status')->default('pending')->comment('pending, in_review, approved, rejected');
             $table->text('comment')->nullable();
             $table->text("admin_comment")->nullable();
             $table->json('details')->nullable()->comment('Type-specific fields stored as JSON');
