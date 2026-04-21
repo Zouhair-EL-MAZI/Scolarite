@@ -2,7 +2,7 @@
     <x-admin.navbar />
     <x-admin.sidebar />
 
-    <main class="ml-64 pt-24 px-8 pb-12">
+    <main class="lg:ml-64 pt-20 sm:pt-24 px-4 sm:px-8 pb-12">
         <div class="flex flex-col gap-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>

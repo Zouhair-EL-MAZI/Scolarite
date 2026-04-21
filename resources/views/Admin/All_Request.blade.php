@@ -4,7 +4,7 @@
     <x-admin.sidebar />
 
     <!-- Main Content Canvas -->
-    <main class="ml-64 pt-24 px-8 pb-12">
+    <main class="lg:ml-64 pt-20 sm:pt-24 px-4 sm:px-8 pb-12">
         <x-admin.header />
 
         <!-- Bento Filter Bar -->
@@ -14,41 +14,41 @@
         />
 
         <!-- Data Table Container -->
-        <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
-            <table class="w-full text-left border-collapse">
+        <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-full">
                 <thead>
                     <tr class="bg-surface-container-low/50">
-                        <th class="p-5 font-bold text-xs uppercase tracking-widest text-slate-500">Student Name</th>
-                        <th class="p-5 font-bold text-xs uppercase tracking-widest text-slate-500">Request Type</th>
-                        <th class="p-5 font-bold text-xs uppercase tracking-widest text-slate-500">Submission Date</th>
-                        <th class="p-5 font-bold text-xs uppercase tracking-widest text-slate-500">Status</th>
-                        <th class="p-5 font-bold text-xs uppercase tracking-widest text-slate-500 text-right">Actions</th>
+                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 whitespace-nowrap">Student Name</th>
+                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 whitespace-nowrap hidden sm:table-cell">Request Type</th>
+                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 whitespace-nowrap hidden md:table-cell">Date</th>
+                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 whitespace-nowrap">Status</th>
+                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 text-right whitespace-nowrap">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-surface-container-low">
                     @foreach ($requests as $request)
-                        <tr class="hover:bg-surface-container-low/30 transition-colors">
-                            <td class="p-5">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-9 h-9 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-on-secondary-fixed text-xs">
+                        <tr class="hover:bg-surface-container-low/30 transition-colors text-sm md:text-base">
+                            <td class="p-3 sm:p-5">
+                                <div class="flex items-center gap-2 sm:gap-3">
+                                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-on-secondary-fixed text-xs flex-shrink-0">
                                         {{ substr($request->student->first_name, 0, 1) }}{{ substr($request->student->last_name, 0, 1) }}
                                     </div>
-                                    <div>
-                                        <p class="font-bold text-on-surface text-sm">{{ $request->student->first_name }} {{ $request->student->last_name }}</p>
-                                        <p class="text-xs text-slate-400">{{ $request->student->cne ?? $request->student->apogee_number }}</p>
+                                    <div class="min-w-0">
+                                        <p class="font-bold text-on-surface text-xs sm:text-sm truncate">{{ $request->student->first_name }} {{ $request->student->last_name }}</p>
+                                        <p class="text-xs text-slate-400 truncate">{{ $request->student->cne ?? $request->student->apogee_number }}</p>
                                     </div>
                                 </div>
                             </td>
-                            <td class="p-5">
-                                <div class="flex items-center gap-2 text-sm font-medium text-on-surface">
-                                    <span class="material-symbols-outlined text-primary text-lg">description</span>
+                            <td class="p-3 sm:p-5 hidden sm:table-cell">
+                                <div class="flex items-center gap-2 text-xs sm:text-sm font-medium text-on-surface whitespace-nowrap">
+                                    <span class="material-symbols-outlined text-primary text-lg hidden sm:inline">description</span>
                                     {{ $request->type }}
                                 </div>
                             </td>
-                            <td class="p-5">
-                                <span class="text-sm text-slate-500 font-medium">{{ $request->created_at->format('M d, Y') }}</span>
+                            <td class="p-3 sm:p-5 hidden md:table-cell">
+                                <span class="text-xs sm:text-sm text-slate-500 font-medium whitespace-nowrap">{{ $request->created_at->format('M d, Y') }}</span>
                             </td>
-                            <td class="p-5">
+                            <td class="p-3 sm:p-5">
                                 @php
                                     $normalizedStatus = strtolower(str_replace(' ', '_', $request->status));
                                     $statusColors = [
@@ -60,24 +60,24 @@
                                     $colors = $statusColors[$normalizedStatus] ?? ['bg-gray-100', 'text-gray-800', 'bg-gray-500'];
                                     $statusLabel = ucwords(str_replace('_', ' ', $normalizedStatus));
                                 @endphp
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $colors[0] }} {{ $colors[1] }}">
-                                    <span class="w-1.5 h-1.5 rounded-full {{ $colors[2] }} mr-1.5"></span>
+                                <span class="inline-flex items-center px-2 sm:px-2.5 py-0.5 rounded-full text-xs font-medium {{ $colors[0] }} {{ $colors[1] }} whitespace-nowrap">
+                                    <span class="w-1.5 h-1.5 rounded-full {{ $colors[2] }} mr-1"></span>
                                     {{ $statusLabel }}
                                 </span>
                             </td>
-                            <td class="p-5 text-right">
-                                <div class="flex items-center justify-end gap-2">
-                                    <a href="{{ route('admin.requests.show', $request->id) }}" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-sky-100 text-sky-600 hover:bg-sky-200 transition" title="View">
-                                        <span class="material-symbols-outlined text-base">visibility</span>
+                            <td class="p-3 sm:p-5 text-right">
+                                <div class="flex items-center justify-end gap-1 sm:gap-2 flex-wrap">
+                                    <a href="{{ route('admin.requests.show', $request->id) }}" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-sky-100 text-sky-600 hover:bg-sky-200 transition flex-shrink-0" title="View">
+                                        <span class="material-symbols-outlined text-sm sm:text-base">visibility</span>
                                     </a>
-                                    <button type="button" onclick="openStatusModal({{ $request->id }}, '{{ $request->status }}')" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-amber-100 text-amber-600 hover:bg-amber-200 transition" title="Update Status">
-                                        <span class="material-symbols-outlined text-base">edit</span>
+                                    <button type="button" onclick="openStatusModal({{ $request->id }}, '{{ $request->status }}')" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-amber-100 text-amber-600 hover:bg-amber-200 transition flex-shrink-0" title="Update Status">
+                                        <span class="material-symbols-outlined text-sm sm:text-base">edit</span>
                                     </button>
                                     <form action="{{ route('admin.requests.destroy', $request->id) }}" method="POST" class="inline" onsubmit="return confirm('Delete this request?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-rose-100 text-rose-600 hover:bg-rose-200 transition" title="Delete">
-                                            <span class="material-symbols-outlined text-base">delete</span>
+                                        <button type="submit" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-rose-100 text-rose-600 hover:bg-rose-200 transition flex-shrink-0" title="Delete">
+                                            <span class="material-symbols-outlined text-sm sm:text-base">delete</span>
                                         </button>
                                     </form>
                                 </div>

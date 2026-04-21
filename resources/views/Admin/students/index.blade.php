@@ -2,7 +2,7 @@
     <x-admin.navbar />
     <x-admin.sidebar />
 
-    <main class="ml-64 pt-24 px-8 pb-12">
+    <main class="lg:ml-64 pt-20 sm:pt-24 px-4 sm:px-8 pb-12">
         <div class="flex flex-col gap-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
@@ -46,6 +46,14 @@
                         value="{{ request('search') }}" />
                 </div>
 
+                 <!-- Action Buttons -->
+                 <div class="col-span-12 md:col-span-3 flex gap-2">
+                    <button type="submit" class="flex-1 bg-slate-900 text-white font-bold py-2 rounded-xl text-sm hover:bg-slate-800 transition-colors flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-sm">search</span>
+                        {{ __('admin.search') }}
+                    </button>
+                </div>
+
                 <!-- Department Filter -->
                 <div class="col-span-6 md:col-span-2 bg-surface-container-low rounded-xl flex items-center px-4">
                     <span class="material-symbols-outlined text-slate-400 mr-2 text-sm">school</span>
@@ -75,18 +83,17 @@
                 </div>
 
                 <!-- Action Buttons -->
-                <div class="col-span-12 md:col-span-3 flex gap-2">
-                    <button type="submit"
-                        class="flex-1 bg-slate-900 text-white font-bold py-2 rounded-xl text-sm hover:bg-slate-800 transition-colors flex items-center justify-center gap-2">
+                {{-- <div class="col-span-12 md:col-span-3 flex gap-2">
+                    <button type="submit" class="flex-1 bg-slate-900 text-white font-bold py-2 rounded-xl text-sm hover:bg-slate-800 transition-colors flex items-center justify-center gap-2">
                         <span class="material-symbols-outlined text-sm">search</span>
                         {{ __('admin.search') }}
                     </button>
-                </div>
+                </div> --}}
             </form>
 
             <!-- Students Table -->
-            <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm">
-                <table class="w-full text-left border-collapse">
+            <div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-full">
                     <thead>
                         <tr class="bg-surface-container-low/50">
                             <th class="p-5 font-bold text-xs uppercase tracking-widest text-slate-500">Student</th>
@@ -116,10 +123,10 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="p-5 text-sm text-slate-700">{{ $student->apogee_number }}</td>
-                                <td class="p-5 text-sm text-slate-700">{{ $student->cne ?? 'N/A' }}</td>
-                                <td class="p-5 text-sm text-slate-700">{{ $student->department }}</td>
-                                <td class="p-5">
+                                <td class="p-3 sm:p-5 text-xs sm:text-sm text-slate-700 hidden sm:table-cell whitespace-nowrap">{{ $student->apogee_number }}</td>
+                                <td class="p-3 sm:p-5 text-xs sm:text-sm text-slate-700 hidden md:table-cell whitespace-nowrap">{{ $student->cne ?? 'N/A' }}</td>
+                                <td class="p-3 sm:p-5 text-xs sm:text-sm text-slate-700 hidden lg:table-cell whitespace-nowrap">{{ $student->department }}</td>
+                                <td class="p-3 sm:p-5">
                                     @php
                                         $statusClasses = [
                                             'active' => ['bg-emerald-50', 'text-emerald-700'],
@@ -160,7 +167,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="p-12 text-center text-sm text-slate-500">
+                                <td colspan="6" class="p-12 text-center text-xs sm:text-sm text-slate-500">
                                     No students found matching your criteria.
                                 </td>
                             </tr>

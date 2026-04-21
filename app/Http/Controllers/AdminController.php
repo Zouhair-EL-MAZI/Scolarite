@@ -56,17 +56,39 @@ class AdminController extends Controller
             $callback = function () use ($query) {
                 $handle = fopen('php://output', 'w');
                 fwrite($handle, "\xEF\xBB\xBF");
-                fputcsv($handle, ['ID', 'Étudiant', 'Numéro Apogee', 'Type', 'Statut', 'Date de soumission', 'Date de mise à jour']);
 
-                foreach ($query->get() as $request) {
+                // Header: include useful student/request fields
+                fputcsv($handle, [
+                    'ID',
+                    'Étudiant',
+                    'Email',
+                    'Numéro Apogee',
+                    'CNE',
+                    'Département',
+                    'Type',
+                    'Statut',
+                    'Commentaire (admin)',
+                    'Commentaire (étudiant)',
+                    'Date de soumission',
+                    'Date de mise à jour',
+                ]);
+
+                foreach ($query->get() as $reqItem) {
+                    $student = $reqItem->student;
+
                     fputcsv($handle, [
-                        $request->id,
-                        trim(($request->student->first_name ?? '') . ' ' . ($request->student->last_name ?? '')),
-                        $request->student->apogee_number ?? '',
-                        $request->type,
-                        $request->status,
-                        $request->created_at->format('Y-m-d H:i:s'),
-                        $request->updated_at->format('Y-m-d H:i:s'),
+                        $reqItem->id,
+                        trim(($student->first_name ?? '') . ' ' . ($student->last_name ?? '')),
+                        $student->email ?? '',
+                        $student->apogee_number ?? '',
+                        $student->cne ?? '',
+                        $student->department ?? '',
+                        $reqItem->type,
+                        $reqItem->status,
+                        $reqItem->admin_comment ?? '',
+                        $reqItem->student_comment ?? '',
+                        $reqItem->created_at->format('Y-m-d H:i:s'),
+                        $reqItem->updated_at->format('Y-m-d H:i:s'),
                     ]);
                 }
 

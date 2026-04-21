@@ -2,7 +2,7 @@
     <x-admin.navbar />
     <x-admin.sidebar />
 
-    <main class="ml-64 pt-24 px-8 pb-12">
+    <main class="pt-20 sm:pt-24 lg:ml-64 px-4 sm:px-8 pb-12">
 
         <div class="flex flex-col gap-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -161,7 +161,7 @@
                             <div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
                                 <div>
                                     <p class="font-semibold text-slate-900 dark:text-white">{{ $action->student->first_name }} {{ $action->student->last_name }}</p>
-                                    <p class="text-sm text-slate-500">{{ $action->type }}</p>
+                                    <p class="text-sm text-slate-500">{{ $typeNames[$action->type] }}</p>
                                 </div>
                                 <span class="inline-flex items-center rounded-full bg-red-100 px-2 py-1 text-xs font-semibold text-red-700">Retardé</span>
                             </div>

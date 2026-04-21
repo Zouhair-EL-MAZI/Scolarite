@@ -1,11 +1,11 @@
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm flex justify-between items-center px-8 h-16 w-full">
     <div class="flex items-center gap-8">
-        <span class="text-xl font-extrabold tracking-tighter text-blue-950 dark:text-white">The Academic Curator</span>
+        <span class="text-xl font-extrabold tracking-tighter text-blue-950 dark:text-white">{{ __('admin.site_title') }}</span>
         {{-- <div class="hidden md:flex items-center gap-6">
-            <a class="text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors px-3 py-2 rounded-lg cursor-pointer active:scale-95 duration-200" href="#">Overview</a>
-            <a class="text-blue-900 dark:text-blue-100 font-bold border-b-2 border-blue-900 px-3 py-2 cursor-pointer active:scale-95 duration-200" href="#">All Requests</a>
-            <a class="text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors px-3 py-2 rounded-lg cursor-pointer active:scale-95 duration-200" href="#">Student Directory</a>
+            <a class="text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors px-3 py-2 rounded-lg cursor-pointer active:scale-95 duration-200" href="#">{{ __('admin.overview') }}</a>
+            <a class="text-blue-900 dark:text-blue-100 font-bold border-b-2 border-blue-900 px-3 py-2 cursor-pointer active:scale-95 duration-200" href="#">{{ __('admin.all_requests') }}</a>
+            <a class="text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors px-3 py-2 rounded-lg cursor-pointer active:scale-95 duration-200" href="#">{{ __('admin.student_directory') }}</a>
         </div> --}}
     </div>
     <div class="flex items-center gap-4">
