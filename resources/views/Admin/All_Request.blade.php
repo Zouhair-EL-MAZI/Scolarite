@@ -18,11 +18,11 @@
             <table class="w-full text-left border-collapse min-w-full">
                 <thead>
                     <tr class="bg-surface-container-low/50">
-                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 whitespace-nowrap">Student Name</th>
-                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 whitespace-nowrap hidden sm:table-cell">Request Type</th>
-                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 whitespace-nowrap hidden md:table-cell">Date</th>
-                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 whitespace-nowrap">Status</th>
-                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 text-right whitespace-nowrap">Actions</th>
+                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 whitespace-nowrap">{{ __('admin.table.student_name') }}</th>
+                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 whitespace-nowrap hidden sm:table-cell">{{ __('admin.table.request_type') }}</th>
+                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 whitespace-nowrap hidden md:table-cell">{{ __('admin.table.date') }}</th>
+                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 whitespace-nowrap">{{ __('admin.table.status') }}</th>
+                        <th class="p-3 sm:p-5 font-bold text-xs uppercase tracking-widest text-slate-500 text-right whitespace-nowrap">{{ __('admin.table.actions') }}</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-surface-container-low">
@@ -67,13 +67,13 @@
                             </td>
                             <td class="p-3 sm:p-5 text-right">
                                 <div class="flex items-center justify-end gap-1 sm:gap-2 flex-wrap">
-                                    <a href="{{ route('admin.requests.show', $request->id) }}" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-sky-100 text-sky-600 hover:bg-sky-200 transition flex-shrink-0" title="View">
+                                        <a href="{{ route('admin.requests.show', $request->id) }}" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-sky-100 text-sky-600 hover:bg-sky-200 transition flex-shrink-0" title="{{ __('admin.actions.view') }}">
                                         <span class="material-symbols-outlined text-sm sm:text-base">visibility</span>
                                     </a>
-                                    <button type="button" onclick="openStatusModal({{ $request->id }}, '{{ $request->status }}')" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-amber-100 text-amber-600 hover:bg-amber-200 transition flex-shrink-0" title="Update Status">
+                                    <button type="button" onclick="openStatusModal({{ $request->id }}, '{{ $request->status }}')" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-amber-100 text-amber-600 hover:bg-amber-200 transition flex-shrink-0" title="{{ __('admin.actions.update_status') }}">
                                         <span class="material-symbols-outlined text-sm sm:text-base">edit</span>
                                     </button>
-                                    <form action="{{ route('admin.requests.destroy', $request->id) }}" method="POST" class="inline" onsubmit="return confirm('Delete this request?');">
+                                        <form action="{{ route('admin.requests.destroy', $request->id) }}" method="POST" class="inline" onsubmit="return confirm('{{ __('admin.modals.delete_confirm') }}');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="inline-flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-rose-100 text-rose-600 hover:bg-rose-200 transition flex-shrink-0" title="Delete">
@@ -88,7 +88,7 @@
             </table>
             <!-- Pagination -->
             <div class="p-5 flex justify-between items-center bg-surface-container-low/20">
-                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Showing {{ $requests->firstItem() }}-{{ $requests->lastItem() }} of {{ $requests->total() }} requests</p>
+                <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">{{ __('admin.table.showing', ['from' => $requests->firstItem(), 'to' => $requests->lastItem(), 'total' => $requests->total()]) }}</p>
                 {{ $requests->links() }}
             </div>
         </div>
@@ -96,11 +96,11 @@
         <section class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="md:col-span-2 bg-gradient-to-br from-primary to-primary-container p-8 rounded-2xl text-on-primary flex flex-col justify-between h-64 relative overflow-hidden shadow-xl">
                 <div class="relative z-10">
-                    <h3 class="text-2xl font-bold tracking-tight mb-2">Automated Processing</h3>
-                    <p class="text-on-primary-container max-w-sm">Enable AI-assisted validation for standard transcript requests to reduce turnaround time by 40%.</p>
+                    <h3 class="text-2xl font-bold tracking-tight mb-2">{{ __('admin.automated_processing.title') }}</h3>
+                    <p class="text-on-primary-container max-w-sm">{{ __('admin.automated_processing.desc') }}</p>
                 </div>
                 <div class="relative z-10">
-                    <button class="bg-white text-primary font-black py-2.5 px-6 rounded-lg text-sm tracking-tight active:scale-95 transition-transform">Configure Rules</button>
+                    <button class="bg-white text-primary font-black py-2.5 px-6 rounded-lg text-sm tracking-tight active:scale-95 transition-transform">{{ __('admin.automated_processing.button') }}</button>
                 </div>
                 <!-- Abstract decorative element -->
                 <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
@@ -108,9 +108,9 @@
             </div>
             <div class="bg-tertiary-container p-8 rounded-2xl flex flex-col justify-center items-center text-center shadow-lg border border-outline-variant/10">
                 <span class="material-symbols-outlined text-tertiary-fixed-dim text-5xl mb-4" style="font-variation-settings: 'FILL' 1;">bolt</span>
-                <h3 class="text-xl font-bold text-on-tertiary-container mb-2">Priority Queue</h3>
-                <p class="text-on-tertiary-container/80 text-sm mb-6">There are 4 urgent requests requiring immediate signature.</p>
-                <button class="w-full bg-tertiary-fixed text-on-tertiary-fixed font-bold py-3 rounded-xl text-sm uppercase tracking-widest hover:brightness-110 transition-all">Review Now</button>
+                <h3 class="text-xl font-bold text-on-tertiary-container mb-2">{{ __('admin.priority_queue.title') }}</h3>
+                <p class="text-on-tertiary-container/80 text-sm mb-6">{{ __('admin.priority_queue.desc') }}</p>
+                <button class="w-full bg-tertiary-fixed text-on-tertiary-fixed font-bold py-3 rounded-xl text-sm uppercase tracking-widest hover:brightness-110 transition-all">{{ __('admin.priority_queue.button') }}</button>
             </div>
         </section>
     </main>
@@ -118,14 +118,14 @@
     <!-- Status Update Modal -->
     <div id="statusModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8">
-            <h2 class="text-2xl font-bold text-slate-900 mb-6">Update Request Status</h2>
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">{{ __('admin.modals.title') }}</h2>
             
             <form id="statusForm" method="POST" class="space-y-4">
                 @csrf
                 @method('PUT')
                 
                 <div>
-                    <label class="block text-sm font-semibold text-slate-700 mb-2">Status</label>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">{{ __('admin.modals.status') }}</label>
                     <select name="status" id="statusSelect" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none">
                         @foreach(\App\Models\Request::STATUSES as $key => $label)
                             <option value="{{ $key }}">{{ $label }}</option>
@@ -134,17 +134,17 @@
                 </div>
 
             <div>
-                <label class="block text-sm font-semibold text-slate-700 mb-2">Comment</label>
+                <label class="block text-sm font-semibold text-slate-700 mb-2">{{ __('admin.modals.comment') }}</label>
                 <textarea name="admin_comment"  rows="4" class="w-full px-4 py-3 border border-slate-200 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-none" placeholder="Add comment about this status update...">
                 </textarea>
             </div>
 
                 <div class="flex gap-3 pt-6">
                     <button type="button" onclick="closeStatusModal()" class="flex-1 px-4 py-3 border border-slate-300 text-slate-700 font-semibold rounded-xl hover:bg-slate-50 transition">
-                        Cancel
+                        {{ __('admin.modals.cancel') }}
                     </button>
                     <button type="submit" class="flex-1 px-4 py-3 bg-primary text-white font-semibold rounded-xl hover:opacity-90 transition">
-                        Update
+                        {{ __('admin.modals.update') }}
                     </button>
                 </div>
             </form>

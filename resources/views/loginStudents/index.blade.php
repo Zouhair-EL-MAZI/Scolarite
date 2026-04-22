@@ -117,8 +117,8 @@
             class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col items-center p-4 sm:p-6 md:p-10 lg:p-12">
             <!-- Brand Identity Section -->
             <div class="flex flex-col items-center mb-6 sm:mb-8 md:mb-10 text-center">
-                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-primary-container rounded-xl flex items-center justify-center mb-4 sm:mb-6 shadow-sm">
-                    <span class="material-symbols-outlined text-primary-fixed text-2xl sm:text-3xl lg:text-4xl" data-icon="school">school</span>
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex items-center justify-center mb-4 sm:mb-6 shadow-sm">
+                    <img src="{{ asset('logoEnsam.png') }}" alt="ENSAM logo" class="w-full h-full object-contain" />
                 </div>
                 <h1 class="font-headline text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tighter text-primary mb-1 sm:mb-2">Academic Curator
                 </h1>

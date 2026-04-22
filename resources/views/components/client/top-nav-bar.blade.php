@@ -3,8 +3,9 @@
 <header
     class="fixed bg-white/85 dark:bg-slate-950/85 backdrop-blur-xl flex justify-between items-center w-full px-6 py-3 max-w-full mx-auto z-50 sticky top-0">
     <div class="flex items-center space-x-6">
-        <h1 class="text-xl font-bold text-blue-900 dark:text-blue-100 font-headline tracking-tight">Academic Curator
-        </h1>
+        <a href="{{ url('/') }}" class="flex items-center">
+            <img src="{{ asset('logoEnsam.png') }}" alt="ENSAM logo" class="w-10 h-10 object-contain" />
+        </a>
         <div class="hidden md:flex items-center space-x-6 border-l pl-6 border-slate-200/20 dark:border-slate-800/20">
             {{-- <a
                 class="text-slate-500 dark:text-slate-400 font-body font-semibold text-sm hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors px-3 py-1 rounded-lg"
@@ -24,6 +25,11 @@
             <span class="material-symbols-outlined text-base">add</span>
             <span class="hidden sm:inline">New Request</span>
         </a> --}}
+
+        <!-- Language switcher -->
+        <div class="mr-2">
+            <x-lang-switcher />
+        </div>
 
         <!-- Notifications -->
         <button

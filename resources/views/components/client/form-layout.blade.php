@@ -48,7 +48,7 @@
 
     <!-- Footer -->
     <footer class="py-12 px-12 text-slate-400 text-[10px] uppercase tracking-[0.3em] font-medium text-center">
-        Academic Curator © {{ now()->year }} • University Administration Systems
+        © {{ now()->year }} • University Administration Systems
     </footer>
 </body>
 </html>

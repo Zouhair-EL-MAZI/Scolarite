@@ -5,6 +5,7 @@ use App\Http\Controllers\FORequestsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginStudentsController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\StudentProfileController;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Locale switcher
+
+Route::get('/lang/{locale}', [LanguageController::class, 'switch'])
+     ->name('locale.switch')
+     ->where('locale', '[a-z]{2}');
+
+// Route::get('/locale/{locale}', function ($locale) {
+//     $available = ['en', 'fr', 'ar'];
+//     if (in_array($locale, $available)) {
+//         // set a persistent cookie for locale (1 year)
+//         $cookie = cookie('locale', $locale, 60 * 24 * 365);
+//         return redirect()->back()->withCookie($cookie);
+//     }
+//     return redirect()->back();
+// })->name('locale.switch');
 
 Route::resource('requests', FORequestsController::class)->only(['index', 'create', 'store'])->middleware('auth.student');
 Route::get('/profile', [StudentProfileController::class, 'show'])->name('profile.show')->middleware('auth:student');

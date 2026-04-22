@@ -11,10 +11,15 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Append SetLocale to every web request
+        $middleware->web(append: [
+            \App\Http\Middleware\SetLocale::class,
+        ]);
+
         $middleware->alias([
             'auth.student' => \App\Http\Middleware\AuthenticateStudent::class,
-            'auth.admin' => \App\Http\Middleware\AuthenticateAdmin::class,
-            'super.admin' => \App\Http\Middleware\EnsureSuperAdmin::class,
+            'auth.admin'   => \App\Http\Middleware\AuthenticateAdmin::class,
+            'super.admin'  => \App\Http\Middleware\EnsureSuperAdmin::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

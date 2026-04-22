@@ -110,11 +110,8 @@
                 <div
                     class="hidden md:flex flex-col justify-between bg-[#0f2755] p-16 text-white relative overflow-hidden">
                     <div>
-                        <div class="flex items-center gap-3 mb-10">
-                            <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center">
-                                <span class="material-symbols-outlined text-white text-2xl">school</span>
-                            </div>
-                            <span class="font-headline font-bold text-lg">The Academic Curator</span>
+                            <div class="flex items-center gap-3 mb-10">
+                            <img src="{{ asset('logoEnsam.png') }}" alt="ENSAM logo" class="w-12 h-12 object-contain rounded-2xl bg-white/10 p-1" />
                         </div>
                         <h1 class="font-headline text-[2.95rem] leading-tight font-extrabold mb-6">
                             Institutional<br />Control Center</h1>
@@ -139,8 +136,7 @@
                     <div class="max-w-xl">
                         <div class="mb-10">
                             <div class="md:hidden flex items-center gap-3 mb-8">
-                                <span class="material-symbols-outlined text-[#0f2755] text-3xl">school</span>
-                                <span class="font-headline font-bold text-xl text-[#0f2755]">The Academic Curator</span>
+                                <img src="{{ asset('logoEnsam.png') }}" alt="ENSAM logo" class="w-10 h-10 object-contain" />
                             </div>
                             <span
                                 class="inline-flex items-center justify-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.26em] text-slate-500 mb-4">{{ __('admin.admin_portal') }}</span>
