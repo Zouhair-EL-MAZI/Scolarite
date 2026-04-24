@@ -3,11 +3,12 @@
 <header
     class="fixed bg-slate-50/95 dark:bg-slate-950/90 border-b border-slate-200/40 dark:border-slate-800/40 backdrop-blur-xl flex justify-between items-center w-full px-6 py-3 max-w-full mx-auto z-50 sticky top-0">
     <div class="flex items-center space-x-4">
-        <button id="sidebarToggleBtn" onclick="toggleStudentSidebar()" class="p-2 lg:hidden bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 shadow-sm hover:bg-slate-200/80 rounded-full transition-colors">
+        <button id="sidebarToggleBtn" onclick="toggleStudentSidebar()"
+            class="p-2 lg:hidden bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 shadow-sm hover:bg-slate-200/80 rounded-full transition-colors flex items-center">
             <span class="material-symbols-outlined">menu</span>
         </button>
         <a href="{{ url('/') }}" class="flex items-center gap-3">
-            <img src="{{ asset('logoEnsam.png') }}" alt="ENSAM logo" class="w-30 h-11 object-contain" />
+            <img src="{{ asset('logoEnsam.png') }}" alt="{{ __('portal.navigation.portal_title') }}" class="w-30 h-11 object-contain" />
         </a>
         <div class="hidden md:flex items-center space-x-6 border-l pl-6 border-slate-200/20 dark:border-slate-800/20">
             {{-- <a
@@ -21,10 +22,11 @@
                 href="#">Documentation</a> --}}
         </div>
     </div>
-    
+
     <div class="flex items-center space-x-4">
         <!-- New Request Button -->
-        {{-- <a href="{{ route('requests.create') }}" class="bg-white text-on-primary px-4 py-1.5 rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-95 flex items-center gap-2">
+        {{-- <a href="{{ route('requests.create') }}"
+            class="bg-white text-on-primary px-4 py-1.5 rounded-xl font-headline font-bold text-sm shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-95 flex items-center gap-2">
             <span class="material-symbols-outlined text-base">add</span>
             <span class="hidden sm:inline">New Request</span>
         </a> --}}
@@ -34,14 +36,42 @@
             <x-lang-switcher />
         </div>
 
-        <!-- Notifications -->
-        <button
-            class="p-2 text-slate-500 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 rounded-full transition-colors">
-            {{-- <span class="material-symbols-outlined text-slate-600 dark:text-slate-400">notifications</span> --}}
-        </button>
-
         <!-- Profile Dropdown -->
-        <div class="relative group">
+        <div class="relative">
+            <button id="adminProfileButton" type="button"
+                class="flex items-center gap-3 rounded-full border border-slate-200 bg-white px-3 py-2 hover:shadow-sm transition"
+                onclick="toggleAdminProfileMenu(event)">
+                <img alt="Administrator profile avatar"
+                    class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-fixed"
+                    src="https://ui-avatars.com/api/?name={{ urlencode( auth('student')->user()->first_name . " " . auth('student')->user()->last_name ) }}&background=002045&color=ffffff&size=128" />
+                <div class="hidden md:flex flex-col text-left">
+                    <span class="text-sm font-semibold text-slate-900">{{ auth('student')->user()->first_name . " " . auth('student')->user()->last_name }}</span>
+                    <span
+                        class="text-xs text-slate-500">{{ __('portal.navigation.student_role') }}</span>
+                </div>
+                <span class="material-symbols-outlined text-slate-400">expand_more</span>
+            </button>
+
+            <div id="adminProfileMenu"
+                class="hidden absolute right-0 mt-2 w-60 overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-xl">
+                <div class="p-4 border-b border-slate-200">
+                    <p class="text-sm font-semibold text-slate-900">{{ auth('student')->user()->first_name . " " . auth('student')->user()->last_name }}</p>
+                    <p class="text-xs text-slate-500">{{ auth('student')->user()->email }}</p>
+                </div>
+                <a href="{{ route('profile.show') }}"
+                    class="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50">{{ __('portal.navigation.my_profile') }}</a>
+                <div class="border-t border-slate-100"></div>
+                <form method="POST" action="{{ route('logout.student') }}" class="m-0">
+                    @csrf
+                    <button type="submit"
+                        class="w-full text-left px-4 py-3 text-sm font-semibold text-rose-600 hover:bg-rose-50">
+                        {{ __('portal.navigation.logout') }}
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        {{-- <div class="relative group">
             <button
                 class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-gray-300 hover:ring-blue-500 transition-all">
                 <img alt="User profile photo" class="w-full h-full object-cover" src="{{ $userImage }}" />
@@ -53,7 +83,8 @@
                 <!-- Profile Header -->
                 <div class="px-4 py-3 border-b border-gray-200">
                     <p class="text-sm font-bold text-gray-900">
-                        {{ auth('student')->user()->first_name . " " . auth('student')->user()->last_name ?? 'Student' }}
+                        {{ auth('student')->user()->first_name . " " . auth('student')->user()->last_name ?? 'Student'
+                        }}
                     </p>
                     <p class="text-xs text-gray-500">
                         {{ auth()->user()->email ?? 'student@university.edu' }}
@@ -78,6 +109,19 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </header>
+<script>
+    function toggleAdminProfileMenu(event) {
+        event.stopPropagation();
+        document.getElementById('adminProfileMenu').classList.toggle('hidden');
+    }
+
+    document.addEventListener('click', function () {
+        const menu = document.getElementById('adminProfileMenu');
+        if (menu && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+        }
+    });
+</script>

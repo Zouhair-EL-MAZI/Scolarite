@@ -6,10 +6,10 @@
                 <span class="material-symbols-outlined">chat_bubble</span>
             </div>
             <div>
-                <h3 class="text-xl font-headline font-bold text-primary">Additional Comments</h3>
-                <p class="text-sm text-on-surface-variant">Any other information our staff should know?</p>
+                <h3 class="text-xl font-headline font-bold text-primary">{{ __('portal.requests.create.comments.title') }}</h3>
+                <p class="text-sm text-on-surface-variant">{{ __('portal.requests.create.comments.description') }}</p>
             </div>
         </div>
-        <textarea name="comment" rows="4" placeholder="Type any additional information here..." class="w-full bg-surface-container-highest border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all font-body resize-none">{{ old('comment') }}</textarea>
+        <textarea name="comment" rows="4" placeholder="{{ __('portal.requests.create.comments.placeholder') }}" class="w-full bg-surface-container-highest border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all font-body resize-none">{{ old('comment') }}</textarea>
     </div>
 </section>
