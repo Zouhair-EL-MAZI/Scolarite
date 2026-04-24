@@ -2,7 +2,7 @@
         <x-admin.navbar />
         <x-admin.sidebar />
 
-        <main class="ml-64 pt-24 px-8 pb-12">
+        <main class="lg:ml-64 pt-20 sm:pt-24 px-4 sm:px-8 pb-12">
                 <div class="max-w-4xl mx-auto space-y-6">
                         <div
                                 class="rounded-3xl bg-white dark:bg-slate-950 p-8 shadow-sm border border-slate-200 dark:border-slate-800">

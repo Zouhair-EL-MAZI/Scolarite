@@ -52,6 +52,58 @@
         h6 {
             font-family: 'Manrope', sans-serif;
         }
+
+        /* Responsive utilities */
+        @media (max-width: 640px) {
+            /* Mobile: Full width */
+            main {
+                min-height: calc(100vh - 64px);
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1023px) {
+            /* Tablet: Full width */
+            main {
+                min-height: calc(100vh - 80px);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            /* Desktop: Account for sidebar */
+            main {
+                min-height: calc(100vh - 96px);
+                transition: margin-left 0.3s ease-in-out;
+            }
+        }
+
+        /* Smooth transitions for sidebar */
+        aside {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Sidebar collapsed state */
+        main.sidebar-collapsed {
+            margin-left: 0 !important;
+        }
+
+        /* Responsive grid adjustments */
+        @media (max-width: 640px) {
+            .grid-cols-1 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1023px) {
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .xl\:grid-cols-4 {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
     </style>
 </head>
 
