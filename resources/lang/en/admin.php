@@ -95,36 +95,4 @@ return [
         'export_format' => 'Export Format',
         'preferred' => '(Preferred)',
         'cancel' => 'Cancel',
-        // Admin All Requests page
-        'table' => [
-                'student_name' => 'Student Name',
-                'request_type' => 'Request Type',
-                'date' => 'Date',
-                'status' => 'Status',
-                'actions' => 'Actions',
-                'showing' => 'Showing :from-:to of :total requests',
-        ],
-        'actions' => [
-                'view' => 'View',
-                'update_status' => 'Update Status',
-                'delete' => 'Delete',
-        ],
-        'automated_processing' => [
-                'title' => 'Automated Processing',
-                'desc' => 'Enable AI-assisted validation for standard transcript requests to reduce turnaround time by 40%.',
-                'button' => 'Configure Rules',
-        ],
-        'priority_queue' => [
-                'title' => 'Priority Queue',
-                'desc' => 'There are 4 urgent requests requiring immediate signature.',
-                'button' => 'Review Now',
-        ],
-        'modals' => [
-                'title' => 'Update Request Status',
-                'status' => 'Status',
-                'comment' => 'Comment',
-                'cancel' => 'Cancel',
-                'update' => 'Update',
-                'delete_confirm' => 'Delete this request?',
-        ],
 ];
