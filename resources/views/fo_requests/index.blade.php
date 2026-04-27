@@ -1,16 +1,26 @@
 @php
-    $_types = collect(App\Models\Request::TYPES ?? [])->toArray();
-    $_statuses = collect(App\Models\Request::STATUSES ?? [])->toArray();
+    $_types = collect(App\Models\Request::TYPES ?? [])->map(function ($label, $key) {
+        $translationKey = 'admin.request_types.' . $key;
+        $translated = __($translationKey);
+
+        return $translated === $translationKey ? $label : $translated;
+    })->toArray();
+    $_statuses = collect(App\Models\Request::STATUSES ?? [])->map(function ($label, $key) {
+        $translationKey = 'admin.statuses.' . $key;
+        $translated = __($translationKey);
+
+        return $translated === $translationKey ? $label : $translated;
+    })->toArray();
 @endphp
 
-<x-client.admin-layout title="My Requests" activeRoute="requests">
+<x-client.admin-layout :title="__('portal.requests.index.page_title')" activeRoute="requests">
     <!-- Page Header -->
     <x-client.admin-header 
-        title="My Requests"
-        description="View and manage all your academic requests, track their status, and access request details."
+        :title="__('portal.requests.index.header.title')"
+        :description="__('portal.requests.index.header.description')"
         :breadcrumb="[
-            ['label' => 'Student Portal', 'url' => route('requests.index')],
-            ['label' => 'My Requests']
+            ['label' => __('portal.requests.index.header.breadcrumb.portal'), 'url' => route('requests.index')],
+            ['label' => __('portal.requests.index.header.breadcrumb.current')]
         ]"
     >
         {{-- <x-client.admin-button variant="primary" icon="add" href="{{ route('requests.create') }}">
@@ -35,17 +45,18 @@
     <!-- Search & Filter -->
     <x-client.admin-filter-bar 
         action="{{ route('requests.index') }}"
-        searchPlaceholder="Search by reference..."
+        :searchPlaceholder="__('portal.requests.index.filters.search_placeholder')"
+        :submitLabel="__('portal.requests.index.filters.submit')"
         :filters="[
             [
                 'name' => 'type',
-                'placeholder' => 'Filter by Type',
+                'placeholder' => __('portal.requests.index.filters.type_placeholder'),
                 'icon' => 'filter_list',
                 'options' => $_types
             ],
             [
                 'name' => 'status',
-                'placeholder' => 'Filter by Status',
+                'placeholder' => __('portal.requests.index.filters.status_placeholder'),
                 'icon' => 'radio_button_checked',
                 'options' => $_statuses
             ]
@@ -57,11 +68,11 @@
         <x-client.admin-table>
             <thead>
                 <tr class="border-b border-outline-variant/20">
-                    <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">Reference</th>
-                    <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">Type</th>
-                    <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">Status</th>
-                    <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">Submitted</th>
-                    <th class="px-6 py-4 text-right text-sm font-semibold text-on-surface">Actions</th>
+                    <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">{{ __('portal.requests.index.table.reference') }}</th>
+                    <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">{{ __('portal.requests.index.table.type') }}</th>
+                    <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">{{ __('portal.requests.index.table.status') }}</th>
+                    <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">{{ __('portal.requests.index.table.submitted') }}</th>
+                    <th class="px-6 py-4 text-right text-sm font-semibold text-on-surface">{{ __('portal.requests.index.table.actions') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -83,14 +94,14 @@
                         <td class="px-6 py-4 text-sm">{{ $request->created_at->format('M d, Y') }}</td>
                         <td class="px-6 py-4 text-right">
                             <a href="{{ route('requests.show', $request) }}" class="text-primary hover:text-primary/80 font-medium text-sm">
-                                View Details
+                                {{ __('portal.requests.index.table.view_details') }}
                             </a>
                         </td>
                     </tr>
                 @empty
                     <tr>
                         <td colspan="5" class="px-6 py-8 text-center text-on-surface-variant">
-                            No requests found. <a href="{{ route('requests.create') }}" class="text-primary hover:underline">Create one now</a>
+                            {{ __('portal.requests.index.table.empty') }} <a href="{{ route('requests.create') }}" class="text-primary hover:underline">{{ __('portal.requests.index.table.create_one_now') }}</a>
                         </td>
                     </tr>
                 @endforelse
@@ -106,7 +117,7 @@
             <x-client.admin-button variant="outlined" size="sm" href="#">Next →</x-client.admin-button>
         </div> --}}
         <div class="p-5 flex justify-between items-center bg-surface-container-low/20">
-            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Showing {{ $requests->firstItem() }}-{{ $requests->lastItem() }} of {{ $requests->total() }} requests</p>
+            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">{{ __('portal.requests.index.table.showing', ['from' => $requests->firstItem(), 'to' => $requests->lastItem(), 'total' => $requests->total()]) }}</p>
             {{ $requests->links() }}
         </div>
     @endif

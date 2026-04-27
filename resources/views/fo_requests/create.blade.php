@@ -1,12 +1,12 @@
-<x-client.admin-layout title="Submit Request | Academic Curator" activeRoute="requests">
+<x-client.admin-layout :title="__('portal.requests.create.page_title')" activeRoute="requests">
     
     <!-- Page Header -->
     <x-client.admin-header 
-        title="Submit New Request"
-        description="Complete the sections below to initiate your formal academic or administrative request."
+        :title="__('portal.requests.create.header.title')"
+        :description="__('portal.requests.create.header.description')"
         :breadcrumb="[
-            ['label' => 'My Requests', 'url' => route('requests.index')],
-            ['label' => 'New Request']
+            ['label' => __('portal.requests.create.header.breadcrumb.requests'), 'url' => route('requests.index')],
+            ['label' => __('portal.requests.create.header.breadcrumb.current')]
         ]"
     />
 
@@ -15,7 +15,7 @@
         <!-- Error Messages -->
         @if ($errors->any())
             <div class="mb-8 p-4 bg-error-container border border-error rounded-lg">
-                <p class="text-error font-semibold mb-2">Please correct the following errors:</p>
+                <p class="text-error font-semibold mb-2">{{ __('portal.requests.create.errors.title') }}</p>
                 <ul class="text-error text-sm space-y-1">
                     @foreach ($errors->all() as $error)
                         <li>• {{ $error }}</li>
@@ -54,8 +54,8 @@
             <!-- STEP 1 -->
             <div x-show="step === 1" x-transition>
                 <x-client.admin-section 
-                    title="Select Request Type" 
-                    description="Choose what type of request you want to submit"
+                    :title="__('portal.requests.create.steps.type.title')" 
+                    :description="__('portal.requests.create.steps.type.description')"
                 >
                     <x-client.form-type-selection 
                         :types="$types"
@@ -67,8 +67,8 @@
             <!-- STEP 2 -->
             <div x-show="step === 2" x-transition>
                 <x-client.admin-section 
-                    title="Request Details" 
-                    description="Provide specific information about your request"
+                    :title="__('portal.requests.create.steps.details.title')" 
+                    :description="__('portal.requests.create.steps.details.description')"
                 >
                     <x-client.form-specifications />
                 </x-client.admin-section>
@@ -77,8 +77,8 @@
             <!-- STEP 3 -->
             <div x-show="step === 3" x-transition>
                 <x-client.admin-section 
-                    title="Additional Comments" 
-                    description="Add any extra information or context"
+                    :title="__('portal.requests.create.steps.comments.title')" 
+                    :description="__('portal.requests.create.steps.comments.description')"
                 >
                     <x-client.form-comments />
                 </x-client.admin-section>
@@ -94,7 +94,7 @@
                     @click="step--"
                     class="px-4 py-2 border rounded-xl"
                 >
-                    Back
+                    {{ __('portal.requests.create.actions.back') }}
                 </button>
 
                 <div class="flex gap-4 ml-auto">
@@ -106,7 +106,7 @@
                         @click="step++"
                         class="px-4 py-2 bg-primary text-white rounded-xl"
                     >
-                        Next
+                        {{ __('portal.requests.create.actions.next') }}
                     </button>
 
                     <!-- Submit -->
@@ -116,7 +116,7 @@
                         icon="send" 
                         type="submit"
                     >
-                        Confirm Submission
+                        {{ __('portal.requests.create.actions.submit') }}
                     </x-client.admin-button>
 
                 </div>

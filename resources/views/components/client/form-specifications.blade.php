@@ -6,9 +6,8 @@
                 <span class="material-symbols-outlined">edit_note</span>
             </div>
             <div>
-                <h3 class="text-xl font-headline font-bold text-primary">Request Specifications</h3>
-                <p class="text-sm text-on-surface-variant">Provide the necessary context and details for your request.
-                </p>
+                <h3 class="text-xl font-headline font-bold text-primary">{{ __('portal.requests.create.specifications.title') }}</h3>
+                <p class="text-sm text-on-surface-variant">{{ __('portal.requests.create.specifications.description') }}</p>
             </div>
         </div>
 
@@ -16,18 +15,18 @@
             <!-- Transcript Fields -->
             <div class="type-fields hidden space-y-6" data-type="transcript">
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Delivery Method</label>
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.delivery_method') }}</label>
                     <select name="delivery_method"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 appearance-none focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled>
-                        <option value="">-- Select delivery method --</option>
-                        <option value="email">Email</option>
-                        <option value="pickup">Pickup</option>
-                        <option value="mail">Mail</option>
+                        <option value="">{{ __('portal.requests.create.specifications.placeholders.delivery_method') }}</option>
+                        <option value="email">{{ __('portal.requests.create.specifications.options.delivery_method.email') }}</option>
+                        <option value="pickup">{{ __('portal.requests.create.specifications.options.delivery_method.pickup') }}</option>
+                        <option value="mail">{{ __('portal.requests.create.specifications.options.delivery_method.mail') }}</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Number of Copies</label>
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.number_of_copies') }}</label>
                     <input type="number" name="number_of_copies" min="1" max="10" value="1"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
@@ -37,14 +36,14 @@
             <!-- Transfer Fields -->
             <div class="type-fields hidden space-y-6" data-type="transfer">
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Destination Program</label>
-                    <input type="text" name="destination_program" placeholder="e.g., Computer Science"
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.destination_program') }}</label>
+                    <input type="text" name="destination_program" placeholder="{{ __('portal.requests.create.specifications.placeholders.destination_program') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Reason for Transfer</label>
-                    <textarea name="reason" rows="4" placeholder="Explain your reasons for transferring..."
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.reason_for_transfer') }}</label>
+                    <textarea name="reason" rows="4" placeholder="{{ __('portal.requests.create.specifications.placeholders.reason_for_transfer') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all font-body resize-none disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled></textarea>
                 </div>
@@ -53,20 +52,20 @@
             <!-- Withdrawal Fields -->
             <div class="type-fields hidden space-y-6" data-type="withdrawal">
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Course Code</label>
-                    <input type="text" name="course_code" placeholder="e.g., CS101"
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.course_code') }}</label>
+                    <input type="text" name="course_code" placeholder="{{ __('portal.requests.create.specifications.placeholders.course_code') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Course Name</label>
-                    <input type="text" name="course_name" placeholder="Course name"
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.course_name') }}</label>
+                    <input type="text" name="course_name" placeholder="{{ __('portal.requests.create.specifications.placeholders.course_name') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Reason</label>
-                    <textarea name="reason" rows="4" placeholder="Explain why you're withdrawing..."
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.reason') }}</label>
+                    <textarea name="reason" rows="4" placeholder="{{ __('portal.requests.create.specifications.placeholders.withdrawal_reason') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all font-body resize-none disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled></textarea>
                 </div>
@@ -75,31 +74,31 @@
             <!-- Leave Fields -->
             <div class="type-fields hidden space-y-6" data-type="leave">
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Leave Type</label>
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.leave_type') }}</label>
                     <select name="leave_type"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 appearance-none focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled>
-                        <option value="">-- Select type --</option>
-                        <option value="medical">Medical</option>
-                        <option value="personal">Personal</option>
-                        <option value="academic">Academic</option>
+                        <option value="">{{ __('portal.requests.create.specifications.placeholders.leave_type') }}</option>
+                        <option value="medical">{{ __('portal.requests.create.specifications.options.leave_type.medical') }}</option>
+                        <option value="personal">{{ __('portal.requests.create.specifications.options.leave_type.personal') }}</option>
+                        <option value="academic">{{ __('portal.requests.create.specifications.options.leave_type.academic') }}</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Start Date</label>
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.start_date') }}</label>
                     <input type="date" name="start_date"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">End Date</label>
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.end_date') }}</label>
                     <input type="date" name="end_date"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Reason</label>
-                    <textarea name="reason" rows="4" placeholder="Describe your situation..."
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.reason') }}</label>
+                    <textarea name="reason" rows="4" placeholder="{{ __('portal.requests.create.specifications.placeholders.leave_reason') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all font-body resize-none disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled></textarea>
                 </div>
@@ -108,20 +107,20 @@
             <!-- Appeal Fields -->
             <div class="type-fields hidden space-y-6" data-type="appeal">
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Course Code</label>
-                    <input type="text" name="course_code" placeholder="e.g., ENG201"
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.course_code') }}</label>
+                    <input type="text" name="course_code" placeholder="{{ __('portal.requests.create.specifications.placeholders.course_code') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Grade Received</label>
-                    <input type="text" name="grade_received" placeholder="e.g., C-, D+"
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.grade_received') }}</label>
+                    <input type="text" name="grade_received" placeholder="{{ __('portal.requests.create.specifications.placeholders.grade_received') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Reason for Appeal</label>
-                    <textarea name="reason" rows="4" placeholder="Explain why you're appealing..."
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.reason_for_appeal') }}</label>
+                    <textarea name="reason" rows="4" placeholder="{{ __('portal.requests.create.specifications.placeholders.appeal_reason') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all font-body resize-none disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled></textarea>
                 </div>
@@ -130,20 +129,20 @@
             <!-- Extension Fields -->
             <div class="type-fields hidden space-y-6" data-type="extension">
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Assignment Name</label>
-                    <input type="text" name="assignment_name" placeholder="Assignment title"
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.assignment_name') }}</label>
+                    <input type="text" name="assignment_name" placeholder="{{ __('portal.requests.create.specifications.placeholders.assignment_name') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Requested Days</label>
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.requested_days') }}</label>
                     <input type="number" name="requested_days" min="1" max="14"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Reason</label>
-                    <textarea name="reason" rows="4" placeholder="Explain why you need an extension..."
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.reason') }}</label>
+                    <textarea name="reason" rows="4" placeholder="{{ __('portal.requests.create.specifications.placeholders.extension_reason') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all font-body resize-none disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled></textarea>
                 </div>
@@ -152,8 +151,8 @@
             <!-- Accommodation Fields -->
             <div class="type-fields hidden space-y-6" data-type="accommodation">
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Accommodation Type</label>
-                    <input type="text" name="accommodation_type" placeholder="e.g., Extended time for exams"
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.accommodation_type') }}</label>
+                    <input type="text" name="accommodation_type" placeholder="{{ __('portal.requests.create.specifications.placeholders.accommodation_type') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
                 </div>
@@ -161,12 +160,11 @@
                     <input type="checkbox" id="supporting_docs" name="supporting_documentation"
                         class="w-5 h-5 rounded cursor-pointer disabled:opacity-50" disabled />
                     <label for="supporting_docs"
-                        class="text-sm font-body text-on-surface cursor-pointer disabled:opacity-50">I have supporting
-                        documentation</label>
+                        class="text-sm font-body text-on-surface cursor-pointer disabled:opacity-50">{{ __('portal.requests.create.specifications.fields.supporting_documentation') }}</label>
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Description</label>
-                    <textarea name="description" rows="4" placeholder="Describe your accommodation needs..."
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.description') }}</label>
+                    <textarea name="description" rows="4" placeholder="{{ __('portal.requests.create.specifications.placeholders.accommodation_description') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all font-body resize-none disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled></textarea>
                 </div>
@@ -175,18 +173,18 @@
             <!-- Enrollment Certificate Fields -->
             <div class="type-fields hidden space-y-6" data-type="enrollment_certificate">
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Delivery Method</label>
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.delivery_method') }}</label>
                     <select name="delivery_method"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 appearance-none focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled>
-                        <option value="">-- Select delivery method --</option>
-                        <option value="email">Email</option>
-                        <option value="pickup">Pickup</option>
-                        <option value="mail">Mail</option>
+                        <option value="">{{ __('portal.requests.create.specifications.placeholders.delivery_method') }}</option>
+                        <option value="email">{{ __('portal.requests.create.specifications.options.delivery_method.email') }}</option>
+                        <option value="pickup">{{ __('portal.requests.create.specifications.options.delivery_method.pickup') }}</option>
+                        <option value="mail">{{ __('portal.requests.create.specifications.options.delivery_method.mail') }}</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Number of Copies</label>
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.number_of_copies') }}</label>
                     <input type="number" name="number_of_copies" min="1" max="10" value="1"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
@@ -196,18 +194,18 @@
             <!-- Diploma Fields -->
             <div class="type-fields hidden space-y-6" data-type="diploma">
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Delivery Method</label>
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.delivery_method') }}</label>
                     <select name="delivery_method"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 appearance-none focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled>
-                        <option value="">-- Select delivery method --</option>
-                        <option value="email">Email</option>
-                        <option value="pickup">Pickup</option>
-                        <option value="mail">Mail</option>
+                        <option value="">{{ __('portal.requests.create.specifications.placeholders.delivery_method') }}</option>
+                        <option value="email">{{ __('portal.requests.create.specifications.options.delivery_method.email') }}</option>
+                        <option value="pickup">{{ __('portal.requests.create.specifications.options.delivery_method.pickup') }}</option>
+                        <option value="mail">{{ __('portal.requests.create.specifications.options.delivery_method.mail') }}</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Number of Copies</label>
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.number_of_copies') }}</label>
                     <input type="number" name="number_of_copies" min="1" max="5" value="1"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
@@ -217,18 +215,18 @@
             <!-- Student Card Fields -->
             <div class="type-fields hidden space-y-6" data-type="student_card">
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Request Type</label>
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.card_request_type') }}</label>
                     <select name="card_type"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 appearance-none focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled>
-                        <option value="">-- Select card option --</option>
-                        <option value="new">New Card</option>
-                        <option value="replacement">Replacement</option>
+                        <option value="">{{ __('portal.requests.create.specifications.placeholders.card_type') }}</option>
+                        <option value="new">{{ __('portal.requests.create.specifications.options.card_type.new') }}</option>
+                        <option value="replacement">{{ __('portal.requests.create.specifications.options.card_type.replacement') }}</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Reason</label>
-                    <textarea name="reason" rows="4" placeholder="Why do you need this card?"
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.reason') }}</label>
+                    <textarea name="reason" rows="4" placeholder="{{ __('portal.requests.create.specifications.placeholders.student_card_reason') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all font-body resize-none disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled></textarea>
                 </div>
@@ -237,19 +235,19 @@
             <!-- Financial Aid Fields -->
             <div class="type-fields hidden space-y-6" data-type="financial_aid">
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Aid Type</label>
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.aid_type') }}</label>
                     <select name="aid_type"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 appearance-none focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled>
-                        <option value="">-- Select aid type --</option>
-                        <option value="scholarship">Scholarship</option>
-                        <option value="loan">Loan</option>
-                        <option value="bursary">Bursary</option>
+                        <option value="">{{ __('portal.requests.create.specifications.placeholders.aid_type') }}</option>
+                        <option value="scholarship">{{ __('portal.requests.create.specifications.options.aid_type.scholarship') }}</option>
+                        <option value="loan">{{ __('portal.requests.create.specifications.options.aid_type.loan') }}</option>
+                        <option value="bursary">{{ __('portal.requests.create.specifications.options.aid_type.bursary') }}</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Reason</label>
-                    <textarea name="reason" rows="4" placeholder="Explain your financial support need..."
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.reason') }}</label>
+                    <textarea name="reason" rows="4" placeholder="{{ __('portal.requests.create.specifications.placeholders.financial_aid_reason') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all font-body resize-none disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled></textarea>
                 </div>
@@ -258,14 +256,14 @@
             <!-- Other Request Fields -->
             <div class="type-fields hidden space-y-6" data-type="other">
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Subject</label>
-                    <input type="text" name="subject" placeholder="Brief subject"
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.subject') }}</label>
+                    <input type="text" name="subject" placeholder="{{ __('portal.requests.create.specifications.placeholders.subject') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg py-3 px-4 focus:ring-2 focus:ring-secondary transition-all font-body text-on-surface disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled />
                 </div>
                 <div>
-                    <label class="block text-sm font-headline font-bold text-primary mb-3">Description</label>
-                    <textarea name="description" rows="4" placeholder="Describe your request in detail..."
+                    <label class="block text-sm font-headline font-bold text-primary mb-3">{{ __('portal.requests.create.specifications.fields.description') }}</label>
+                    <textarea name="description" rows="4" placeholder="{{ __('portal.requests.create.specifications.placeholders.description') }}"
                         class="w-full bg-surface-container-highest border-none rounded-lg p-4 focus:ring-2 focus:ring-secondary transition-all font-body resize-none disabled:bg-outline-variant/20 disabled:text-on-surface-variant"
                         disabled></textarea>
                 </div>

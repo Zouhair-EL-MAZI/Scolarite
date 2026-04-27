@@ -1,5 +1,6 @@
 @props([
     'searchPlaceholder' => 'Search requests...',
+    'submitLabel' => 'Search',
     'action' => '',
     'filters' => []
 ])
@@ -52,7 +53,7 @@
             type="submit"
             class="w-full h-full bg-primary text-white rounded-2xl text-sm font-medium hover:opacity-90 transition"
         >
-            Search
+            {{ $submitLabel }}
         </button>
     </div>
 
