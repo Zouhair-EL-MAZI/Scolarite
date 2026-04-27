@@ -85,6 +85,8 @@
 
         .editorial-gradient {
             background: linear-gradient(135deg, #002045 0%, #1a365d 100%);
+            position: relative;
+            overflow: hidden;
         }
 
         .pattern-bg {
@@ -99,6 +101,25 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
+
+        /* Left panel decorative/overlay shapes */
+        .left-decor-circle {
+            position: absolute;
+            right: -6rem;
+            bottom: -5rem;
+            width: 14rem;
+            height: 14rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.06);
+            filter: blur(30px);
+            pointer-events: none;
+        }
+
+        .branding-badge {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+        }
     </style>
 </head>
 
@@ -107,28 +128,24 @@
         <div class="w-full max-w-6xl rounded-[32px] overflow-hidden shadow-[0_28px_70px_rgba(15,23,42,0.12)] bg-white">
             <div class="grid grid-cols-1 md:grid-cols-2">
                 <!-- Left Branding Panel -->
-                <div
-                    class="hidden md:flex flex-col justify-center items-center editorial-gradient p-20 pt-12 text-white relative overflow-hidden">
-                    <div class="w-60 h-60 flex items-center justify-center rounded-2xl bg-white/6 p-6"
+                <div class="hidden md:flex flex-col justify-center items-start editorial-gradient p-12 text-white relative overflow-hidden"
+                    style="border-top-left-radius:48px;border-bottom-left-radius:48px;">
+                    <div class="w-64 h-64 flex items-center justify-center rounded-2xl bg-white/6 p-1"
                         style="backdrop-filter: blur(6px);">
-                        <div class="bg-white rounded-lg p-3 shadow-md flex items-center justify-center">
+                        <div class="bg-white rounded-lg p-4 shadow-md flex items-center justify-center">
                             <img src="{{ asset('logoEnsam.png') }}" alt="ENSAM logo"
-                                class="w-50 h-auto object-contain" />
+                                class="w-48 h-auto object-contain" />
                         </div>
+
                     </div>
-                    <div class="mt-6 text-center max-w-xs mx-auto">
-                        <p class="mt-6 text-center max-w-xs mx-auto">
-                            <span class="block text-sm font-semibold text-[#bd841a]">
-                                Ecole Nationale Supérieure d'Arts et Métiers
-                            </span>
-                            <span class="block text-xs text-gray-400 mt-1">
-                                Université Hassan II Casablanca
-                            </span>
-                        </p>
-                    </div>
-                    <div
-                        class="absolute -right-24 bottom-[-5rem] w-60 h-60 rounded-full bg-white/10 blur-3xl pointer-events-none">
-                    </div>
+                    <span
+                        class="inline-flex items-center justify-center rounded-full branding-badge px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] mb-6">PORTAIL
+                        ADMINISTRATEUR</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold leading-tight max-w-[18rem] mb-6">Bienvenue sur le<br
+                            class="hidden md:inline" />Portail Administrateur</h2>
+
+
+                    <div class="left-decor-circle"></div>
                 </div>
 
                 <!-- Login Form Panel -->
@@ -138,13 +155,11 @@
                             <div class="md:hidden flex flex-col items-start gap-3 mb-8 -mt-6">
                                 <div class="bg-white rounded-md p-1 shadow-sm">
                                     <img src="{{ asset('logoEnsam.png') }}" alt="ENSAM logo"
-                                        class="w-15 h-12 object-contain" />
+                                        class="w-36 h-auto object-contain" />
                                 </div>
 
                             </div>
-                            <span
-                                class="inline-flex items-center justify-center rounded-full bg-[#eef6ff] px-3 py-1 text-xs font-semibold uppercase tracking-[0.26em] text-[#0f2755] mb-4">PORTAIL
-                                ADMINISTRATEUR</span>
+
 
                             <p class="text-slate-600 text-base">Veuillez entrer vos identifiants institutionnels.</p>
                             <form method="POST" action="{{ route('admin.login.submit') }}" class="space-y-6">
